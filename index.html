@@ -4,15 +4,20 @@
   <meta charset="UTF-8" />
   <title>Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
   <style>
     :root { --theme-color: #0f766e; }
     .markdown-section { max-width: 920px; line-height: 1.65; }
     .markdown-section table { display: table; width: 100%; }
     .markdown-section pre { border-radius: 8px; }
-    /* Keep sidebar toggle visible (mobile + desktop) */
+    /* Keep menu open & obvious */
+    .sidebar { padding-top: 0; }
     .sidebar-toggle { background-color: transparent; }
     .sidebar-toggle span { background-color: #0f766e; }
+    .app-nav { margin-right: 80px; }
+    .app-nav li { margin: 0 6px; }
     @media screen and (max-width: 768px) {
       .sidebar-toggle { display: block !important; }
     }
@@ -28,10 +33,16 @@
       basePath: '/learning-hub/',
       homepage: 'README.md',
       loadSidebar: true,
+      loadNavbar: true,
       subMaxLevel: 2,
       // MUST include /learning-hub/ — bare /_sidebar.md 404s on github.io root
+      // cache-bust query so browsers pick up menu updates
       alias: {
-        '/.*/_sidebar.md': '/learning-hub/_sidebar.md'
+        '/.*/_sidebar.md': '/learning-hub/_sidebar.md?v=20260718b',
+        '/.*/_navbar.md': '/learning-hub/_navbar.md?v=20260718b'
+      },
+      requestHeaders: {
+        'cache-control': 'no-cache'
       },
       auto2top: true,
       relativePath: false,
