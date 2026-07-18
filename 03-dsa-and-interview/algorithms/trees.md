@@ -36,4 +36,4 @@ while (!q.isEmpty()) {
 
 ## Next
 
-[graphs.md](/03-dsa-and-interview/algorithms/graphs)
+[graphs.md](03-dsa-and-interview/algorithms/graphs.md)

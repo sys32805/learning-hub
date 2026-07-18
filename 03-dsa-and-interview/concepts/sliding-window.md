@@ -1,44 +1,48 @@
 # Sliding window
 
-**Idea:** Maintain a window `[left, right]` over an array/string. Slide it to find max/min/longest/shortest subarray that meets a condition — usually **O(n)** instead of O(n²).
+**Idea:** Keep a window of size `k` (or growing/shrinking) and slide it across the array — usually O(n).
 
-**Folder on GitHub:** [slidingWindow](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/slidingWindow)
+**Your folder:** [slidingWindow](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/slidingWindow)
 
-## Pattern
+---
 
-```text
-left = 0
-for right in 0..n-1:
-  add a[right] into window
-  while window is invalid:
-    remove a[left]
-    left++
-  update answer
-```
-
-## Your practice files
-
-| File | Typical idea | GitHub |
-|------|--------------|--------|
-| `maxSumSubArray.java` | Max sum of window size k | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/maxSumSubArray.java) |
-| `smallestSubarray.java` | Smallest window with sum ≥ target | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/smallestSubarray.java) |
-| `LongestSubstringWithoutRepeatingCharacters.java` | Longest unique substring | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/LongestSubstringWithoutRepeatingCharacters.java) |
-| `FrequencyOfMostFrequentElement.java` | Frequency with window ops | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/FrequencyOfMostFrequentElement.java) |
-
-## Tiny fixed-window example
+## Max sum of subarray of size k (your code)
 
 ```java
-// max sum of any subarray of size k
-int maxSum = 0, window = 0;
-for (int i = 0; i < k; i++) window += a[i];
-maxSum = window;
-for (int i = k; i < a.length; i++) {
-  window += a[i] - a[i - k]; // slide
-  maxSum = Math.max(maxSum, window);
+package rohit.slidingWindow;
+
+public class maxSumSubArray {
+  public static void main(String[] args){
+    int a[] = new int[] { -1, -2, -3, -4};
+    int k = 3;
+    int sum = 0;
+    int maxSum = 0;
+
+    // first window
+    for (int i = 0; i < k; i++) {
+      sum = sum + a[i];
+    }
+    maxSum = sum;
+
+    // slide: add right, remove left
+    for(int j = k ; j < a.length ; j++){
+      sum += a[j];
+      sum -= a[j-k];
+      maxSum = Math.max(maxSum, sum);
+    }
+    System.err.println(maxSum);
+  }
 }
 ```
 
-## Next
+---
 
-- [Concepts home](/03-dsa-and-interview/concepts/README)
-- Practice similar problems in [04-leetcode](/04-leetcode/README)
+## Other files in your folder
+
+| File | GitHub |
+|------|--------|
+| `smallestSubarray.java` | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/smallestSubarray.java) |
+| `LongestSubstringWithoutRepeatingCharacters.java` | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/LongestSubstringWithoutRepeatingCharacters.java) |
+| `FrequencyOfMostFrequentElement.java` | [Open](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/concepts/slidingWindow/FrequencyOfMostFrequentElement.java) |
+
+[Concepts home](03-dsa-and-interview/concepts/README.md) · [Strings algorithms](03-dsa-and-interview/algorithms/strings.md)

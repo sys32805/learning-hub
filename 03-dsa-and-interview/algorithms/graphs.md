@@ -32,4 +32,4 @@ while (!q.isEmpty()) {
 
 ## Next
 
-[dp.md](/03-dsa-and-interview/algorithms/dp)
+[dp.md](03-dsa-and-interview/algorithms/dp.md)

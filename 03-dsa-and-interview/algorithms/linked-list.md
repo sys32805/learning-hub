@@ -37,5 +37,5 @@ while (fast != null && fast.next != null) {
 
 ## Related
 
-- Concepts SSL/DLL: [data-structures.md](/03-dsa-and-interview/concepts/data-structures)  
-- Next: [stack-queue.md](/03-dsa-and-interview/algorithms/stack-queue)
+- Concepts SSL/DLL: [data-structures.md](03-dsa-and-interview/concepts/data-structures.md)  
+- Next: [stack-queue.md](03-dsa-and-interview/algorithms/stack-queue.md)

@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Learning Hub — Interview Prep</title>
+  <title>Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
   <style>
     :root { --theme-color: #0f766e; }
-    .markdown-section { max-width: 900px; line-height: 1.65; }
+    .markdown-section { max-width: 920px; line-height: 1.65; }
     .markdown-section table { display: table; width: 100%; }
+    .markdown-section pre { border-radius: 8px; }
   </style>
 </head>
 <body>
   <div id="app">Loading…</div>
   <script>
     window.$docsify = {
-      name: 'Interview Prep Hub',
+      name: 'Learning Hub',
       repo: 'sys32805/learning-hub',
+      // GitHub project pages live under /learning-hub/
       basePath: '/learning-hub/',
       homepage: 'README.md',
       loadSidebar: true,
@@ -26,7 +28,8 @@
       auto2top: true,
       relativePath: false,
       routerMode: 'hash',
-      notFoundPage: true,
+      // Do NOT use custom 404 — it hid real routing errors
+      notFoundPage: false,
       search: 'auto',
       copyCode: { buttonText: 'Copy', successText: 'Copied' },
       pagination: {
