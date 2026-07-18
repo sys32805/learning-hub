@@ -69,40 +69,80 @@
       z-index: 1000;
       background: #0f766e;
       color: #fff;
-      padding: 10px 14px;
+      padding: 10px 16px;
       font-family: system-ui, sans-serif;
     }
     #top-chrome-inner {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px 14px;
+      flex-direction: row;
+      flex-wrap: nowrap;
       align-items: center;
-      justify-content: space-between;
+      gap: 16px;
+      width: 100%;
     }
     #quick-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 12px;
+      gap: 8px 14px;
       align-items: center;
       font-size: 13px;
+      flex: 1 1 auto;
+      min-width: 0;
+      order: 1;
+    }
+    #quick-nav strong {
+      margin-right: 4px;
+      opacity: 0.95;
     }
     #quick-nav a {
-      color: #fff;
+      color: #fff !important;
       font-weight: 600;
       text-decoration: none;
+      white-space: nowrap;
     }
     #quick-nav a:hover { text-decoration: underline; }
     #logout-btn {
-      border: 1px solid rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.12);
+      order: 2;
+      flex: 0 0 auto;
+      margin-left: auto;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.15);
       color: #fff;
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 8px 14px;
       font-weight: 700;
       cursor: pointer;
+      white-space: nowrap;
+    }
+    #logout-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    /* Keep Docsify sidebar below sticky header + readable text */
+    .sidebar {
+      top: 52px !important;
+      padding-top: 8px !important;
+    }
+    .sidebar-toggle {
+      top: 64px !important;
+    }
+    .sidebar .app-name a,
+    .sidebar h1 a {
+      color: #0f766e !important;
+    }
+    .sidebar ul li a,
+    .sidebar-nav a,
+    .sidebar-nav li > p {
+      color: #333 !important;
+    }
+    .sidebar ul li.active > a {
+      color: #0f766e !important;
     }
     .markdown-section { max-width: 920px; line-height: 1.65; }
     .markdown-section table { display: table; width: 100%; }
+    @media (max-width: 720px) {
+      #top-chrome-inner { flex-wrap: wrap; }
+      #logout-btn { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
