@@ -178,16 +178,18 @@ html, body {
   gap: 10px 14px;
   padding: 10px 16px;
   min-height: 52px;
+  background: var(--lh-accent-deep);
 }
 
 #quick-nav {
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   gap: 8px 12px;
   align-items: center;
   font-size: 13px;
-  flex: 1 1 auto;
+  flex: 1 1 220px;
   min-width: 0;
+  order: 1;
 }
 
 #quick-nav strong { margin-right: 2px; opacity: 0.9; }
@@ -210,6 +212,7 @@ html, body {
   align-items: center;
   flex: 0 0 auto;
   margin-left: auto;
+  order: 2;
 }
 
 #app-toolbar .nav-btn {
@@ -248,9 +251,20 @@ html, body {
   padding-top: var(--lh-chrome-h, 56px);
 }
 
-/* Kill Docsify top navbar (duplicates our quick links and was clipping) */
-.app-nav {
+/* Kill Docsify top navbar completely (was overlapping / clipping) */
+.app-nav,
+nav.app-nav,
+body > nav.app-nav,
+.github-corner + .app-nav {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Docsify sidebar must start below our header */
@@ -352,17 +366,35 @@ main,
 .markdown-section table {
   display: table;
   width: 100%;
+  border-collapse: collapse;
   border-color: var(--lh-border) !important;
+  background: var(--lh-surface) !important;
 }
 
 .markdown-section tr,
 .markdown-section th,
 .markdown-section td {
   border-color: var(--lh-border) !important;
+  background: transparent !important;
+  color: var(--lh-text) !important;
 }
 
 .markdown-section th {
-  background: var(--lh-surface) !important;
+  background: var(--lh-bg-elevated) !important;
+  color: var(--lh-text) !important;
+}
+
+.markdown-section tr:nth-child(2n) {
+  background: var(--lh-accent-soft) !important;
+}
+
+.markdown-section tr:nth-child(2n) td {
+  background: transparent !important;
+  color: var(--lh-text) !important;
+}
+
+.markdown-section td a {
+  color: var(--lh-accent) !important;
 }
 
 .search input {

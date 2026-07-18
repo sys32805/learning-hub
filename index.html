@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-  <link rel="stylesheet" href="/learning-hub/assets/theme.css" />
+  <link rel="stylesheet" href="/learning-hub/assets/theme.css?v=20260719a" />
 </head>
 <body>
   <!-- Login -->
@@ -53,7 +53,7 @@
     <div id="app">Loading…</div>
   </div>
 
-  <script src="/learning-hub/assets/auth-config.js"></script>
+  <script src="/learning-hub/assets/auth-config.js?v=20260719a"></script>
   <script>
     (function () {
       var THEME_KEY = 'learning-hub-theme';
@@ -204,6 +204,16 @@
           .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
           .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
           .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
+          .then(function () {
+            // Remove any Docsify navbar if a cached build injects it
+            function stripAppNav() {
+              document.querySelectorAll('.app-nav').forEach(function (el) { el.remove(); });
+            }
+            stripAppNav();
+            var obs = new MutationObserver(stripAppNav);
+            obs.observe(document.body, { childList: true, subtree: true });
+            syncChromeHeight();
+          })
           .catch(function () {
             document.getElementById('app').textContent = 'Failed to load study app scripts. Check network and refresh.';
           });
