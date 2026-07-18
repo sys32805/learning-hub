@@ -10,6 +10,12 @@
     .markdown-section { max-width: 920px; line-height: 1.65; }
     .markdown-section table { display: table; width: 100%; }
     .markdown-section pre { border-radius: 8px; }
+    /* Keep sidebar toggle visible (mobile + desktop) */
+    .sidebar-toggle { background-color: transparent; }
+    .sidebar-toggle span { background-color: #0f766e; }
+    @media screen and (max-width: 768px) {
+      .sidebar-toggle { display: block !important; }
+    }
   </style>
 </head>
 <body>
@@ -22,15 +28,22 @@
       basePath: '/learning-hub/',
       homepage: 'README.md',
       loadSidebar: true,
+      subMaxLevel: 2,
+      // MUST include /learning-hub/ — bare /_sidebar.md 404s on github.io root
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
+        '/.*/_sidebar.md': '/learning-hub/_sidebar.md'
       },
       auto2top: true,
       relativePath: false,
       routerMode: 'hash',
       // Do NOT use custom 404 — it hid real routing errors
       notFoundPage: false,
-      search: 'auto',
+      search: {
+        placeholder: 'Search notes…',
+        noData: 'No results',
+        depth: 3,
+        pathNamespaces: ['/']
+      },
       copyCode: { buttonText: 'Copy', successText: 'Copied' },
       pagination: {
         previousText: 'Previous',
