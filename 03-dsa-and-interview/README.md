@@ -2,17 +2,16 @@
 
 **View code on GitHub:** [03-dsa-and-interview](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview)
 
-| Folder | Contents | Use for | Code |
-|--------|----------|---------|------|
-| [oops](oops/) | **OOPs interview Q&A** | Core Java / design | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops) |
-| [concepts](concepts/) | Data structures, recursion, Java 8, … | Learn the topic | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts) |
-| [algorithms](algorithms/) | Java interview implementations | Drill patterns | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms) |
-| [`../04-leetcode`](../04-leetcode/) | Solved LeetCode problems | Timed practice | [Open](https://github.com/sys32805/learning-hub/tree/main/04-leetcode) |
+| Section | On this site | Code on GitHub |
+|---------|--------------|----------------|
+| OOPs | [oops/README.md](oops/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops) |
+| Concepts | [concepts/README.md](concepts/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts) |
+| Algorithms | [algorithms/README.md](algorithms/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms) |
+| LeetCode | [../04-leetcode/README.md](../04-leetcode/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/04-leetcode) |
 
 ## Study flow
 
-1. **oops** — four pillars, abstract vs interface, SOLID
-2. **concepts** — pick one topic (e.g. arrays / trees)
-3. **algorithms** — read + rewrite 1–2 Java solutions
-4. **04-leetcode** — solve 1–2 matching problems
-
+1. [OOPs](oops/README.md) — theory + examples  
+2. [Concepts](concepts/README.md) — recursion, bits, sliding window, DS, Java 8  
+3. [Algorithms](algorithms/README.md) — drill Java interview packages  
+4. [LeetCode](../04-leetcode/README.md) — timed practice  

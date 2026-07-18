@@ -1,17 +1,22 @@
 # Concepts (Java DSA)
 
-**View all concept code on GitHub:** [concepts](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)
+Learn ideas here with short explanations and examples. Click **Open on GitHub** to see the full `.java` file.
 
-Topic folders for Java DSA and related practice.
+## Topics (start here)
 
-| Folder | Focus | GitHub |
-|--------|--------|--------|
-| `datastructures` | Arrays, Stack, lists, strings | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/datastructures) |
-| `recursion` | Recursion patterns | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/recursion) |
-| `slidingWindow` | Sliding window | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/slidingWindow) |
-| `bit_manipulation` | Bits | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/bit_manipulation) |
-| `collection` | Java Collections | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/collection) |
-| `Java8` | Lambdas, streams | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/Java8) |
-| `leetcode` | Extra array easies | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/leetcode) |
+| Topic | What you learn | Page |
+|-------|----------------|------|
+| Recursion | Call stack, base case, factorial / Fibonacci | [Open page](recursion.md) |
+| Bit manipulation | Binary, flips, tricks | [Open page](bit-manipulation.md) |
+| Sliding window | Subarray / substring windows | [Open page](sliding-window.md) |
+| Data structures | Arrays, lists, stack, sort, tree | [Open page](data-structures.md) |
+| Java 8 | Streams, lambdas, functional interfaces | [Open page](java8.md) |
+| Collections | List / Set / Map practice | [Open page](collections.md) |
 
-Next: [algorithms](../algorithms/) → [04-leetcode](../../04-leetcode/).
+## How to use
+
+1. Read the topic page (this site).
+2. Open the linked GitHub file and re-type the code yourself.
+3. Drill the same idea in [Algorithms](../algorithms/README.md) then [LeetCode](../../04-leetcode/README.md).
+
+**All concept source folders:** [GitHub concepts/](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)

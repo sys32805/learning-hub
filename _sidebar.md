@@ -1,6 +1,6 @@
-* [Home](/)
+* [Home](README.md)
 * [How to add notes](HOW-TO-ADD-CONTENT.md)
-* [Full repo on GitHub](https://github.com/sys32805/learning-hub)
+* [Full code on GitHub](https://github.com/sys32805/learning-hub)
 
 * **01 GitHub**
   * [Overview](01-github/README.md)
@@ -10,13 +10,19 @@
 
 * **03 DSA & Interview**
   * [Overview](03-dsa-and-interview/README.md)
-  * [OOPs](03-dsa-and-interview/oops/README.md)
-  * [OOPs advanced](03-dsa-and-interview/oops/04-advanced-oops-interview.md)
-  * [OOPs basics Q&A](03-dsa-and-interview/oops/01-oops-basics.txt)
-  * [Exceptions](03-dsa-and-interview/oops/02-exception-handling.txt)
-  * [Multithreading](03-dsa-and-interview/oops/03-multithreading.txt)
+  * [OOPs home](03-dsa-and-interview/oops/README.md)
+  * [OOPs advanced + code](03-dsa-and-interview/oops/04-advanced-oops-interview.md)
+  * [OOPs basics Q&A](03-dsa-and-interview/oops/01-oops-basics.md)
+  * [Exceptions](03-dsa-and-interview/oops/02-exception-handling.md)
+  * [Multithreading](03-dsa-and-interview/oops/03-multithreading.md)
   * [Algorithms (Java)](03-dsa-and-interview/algorithms/README.md)
-  * [Concepts](03-dsa-and-interview/concepts/README.md)
+  * [Concepts home](03-dsa-and-interview/concepts/README.md)
+  * [Recursion](03-dsa-and-interview/concepts/recursion.md)
+  * [Bit manipulation](03-dsa-and-interview/concepts/bit-manipulation.md)
+  * [Sliding window](03-dsa-and-interview/concepts/sliding-window.md)
+  * [Data structures](03-dsa-and-interview/concepts/data-structures.md)
+  * [Java 8](03-dsa-and-interview/concepts/java8.md)
+  * [Collections](03-dsa-and-interview/concepts/collections.md)
 
 * **04 LeetCode**
   * [Overview](04-leetcode/README.md)

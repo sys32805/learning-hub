@@ -27,7 +27,7 @@ Run with JDK 8+ and Gradle (`./gradlew build` or open in IntelliJ).
 
 ## How to practice
 
-1. Learn the idea in [`../concepts`](../concepts/) — [concepts on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)
+1. Learn the idea in [Concepts](../concepts/README.md) — [concepts on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)
 2. Open **one** Java class (use the GitHub links above), then re-implement without looking
-3. Solve a matching problem in [`../../04-leetcode`](../../04-leetcode/)
+3. Solve a matching problem in [04-leetcode](../../04-leetcode/README.md)
 
