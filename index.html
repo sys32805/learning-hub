@@ -63,10 +63,10 @@
     #app-shell { display: none; }
     #app-shell.is-open { display: block; }
 
+    /* Header sits in normal flow (no sticky fight with Docsify) */
     #top-chrome {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: relative;
+      z-index: 10;
       background: #0f766e;
       color: #fff;
       padding: 10px 16px;
@@ -75,25 +75,19 @@
     #top-chrome-inner {
       display: flex;
       flex-direction: row;
-      flex-wrap: nowrap;
       align-items: center;
-      gap: 16px;
-      width: 100%;
+      gap: 12px;
+      max-width: 100%;
     }
     #quick-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 14px;
+      gap: 8px 12px;
       align-items: center;
       font-size: 13px;
-      flex: 1 1 auto;
-      min-width: 0;
-      order: 1;
+      flex: 1;
     }
-    #quick-nav strong {
-      margin-right: 4px;
-      opacity: 0.95;
-    }
+    #quick-nav strong { margin-right: 2px; }
     #quick-nav a {
       color: #fff !important;
       font-weight: 600;
@@ -102,9 +96,8 @@
     }
     #quick-nav a:hover { text-decoration: underline; }
     #logout-btn {
-      order: 2;
-      flex: 0 0 auto;
       margin-left: auto;
+      flex-shrink: 0;
       border: 1px solid rgba(255,255,255,0.45);
       background: rgba(255,255,255,0.15);
       color: #fff;
@@ -112,37 +105,36 @@
       padding: 8px 14px;
       font-weight: 700;
       cursor: pointer;
-      white-space: nowrap;
     }
-    #logout-btn:hover {
-      background: rgba(255,255,255,0.25);
-    }
-    /* Keep Docsify sidebar below sticky header + readable text */
-    .sidebar {
-      top: 52px !important;
-      padding-top: 8px !important;
-    }
-    .sidebar-toggle {
-      top: 64px !important;
-    }
+    #logout-btn:hover { background: rgba(255,255,255,0.28); }
+
+    /* Hide GitHub corner notch that breaks the header edge */
+    .github-corner { display: none !important; }
+
+    /* Do NOT move .sidebar-toggle — that caused the green overlay on menu text */
+    /* Readable left menu (vue default is too light) */
     .sidebar .app-name a,
     .sidebar h1 a {
       color: #0f766e !important;
+      font-weight: 700 !important;
     }
-    .sidebar ul li a,
-    .sidebar-nav a,
-    .sidebar-nav li > p {
-      color: #333 !important;
-    }
-    .sidebar ul li.active > a {
+    .sidebar .sidebar-nav li > p {
       color: #0f766e !important;
+      font-weight: 700 !important;
+      opacity: 1 !important;
     }
+    .sidebar .sidebar-nav li a {
+      color: #2c3e50 !important;
+      font-weight: 500 !important;
+      opacity: 1 !important;
+    }
+    .sidebar .sidebar-nav li.active > a {
+      color: #0f766e !important;
+      font-weight: 700 !important;
+    }
+
     .markdown-section { max-width: 920px; line-height: 1.65; }
     .markdown-section table { display: table; width: 100%; }
-    @media (max-width: 720px) {
-      #top-chrome-inner { flex-wrap: wrap; }
-      #logout-btn { margin-left: 0; }
-    }
   </style>
 </head>
 <body>
@@ -216,7 +208,7 @@
         docsifyStarted = true;
         window.$docsify = {
           name: 'Learning Hub',
-          repo: 'sys32805/learning-hub',
+          // no repo corner — it was cutting the header edge
           basePath: '/learning-hub/',
           homepage: 'README.md',
           loadSidebar: true,
@@ -248,6 +240,21 @@
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
+          .then(function () {
+            function fixSidebarText() {
+              document.querySelectorAll('.sidebar .sidebar-nav li a').forEach(function (a) {
+                a.style.setProperty('color', '#2c3e50', 'important');
+                a.style.setProperty('opacity', '1', 'important');
+              });
+              document.querySelectorAll('.sidebar .sidebar-nav li > p, .sidebar .app-name a').forEach(function (el) {
+                el.style.setProperty('color', '#0f766e', 'important');
+                el.style.setProperty('opacity', '1', 'important');
+              });
+            }
+            fixSidebarText();
+            setTimeout(fixSidebarText, 300);
+            setTimeout(fixSidebarText, 1000);
+          })
           .catch(function () {
             document.getElementById('app').textContent = 'Failed to load. Refresh the page.';
           });
