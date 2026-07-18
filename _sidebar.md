@@ -55,10 +55,22 @@
   * [Overview](04-leetcode/README.md)
   * [Problems index](04-leetcode/Leetcode/README.md)
 
+* **Spring Boot**
+  * [Spring home](05-spring-boot/README.md)
+  * [Interview home](05-spring-boot/interview/README.md)
+  * [Daily revision](05-spring-boot/interview/daily-revision.md)
+  * [Annotations](05-spring-boot/interview/annotations.md)
+  * [Core basics](05-spring-boot/interview/core-basics.md)
+  * [IoC / DI / Beans](05-spring-boot/interview/ioc-di.md)
+  * [REST & Web](05-spring-boot/interview/rest-web.md)
+  * [JPA / Hibernate](05-spring-boot/interview/jpa-hibernate.md)
+  * [Security](05-spring-boot/interview/security.md)
+  * [Trick questions](05-spring-boot/interview/tricks.md)
+  * [Full Q&A bank](05-spring-boot/interview/interview-qa.md)
+
 * **Other**
   * [GitHub basics](01-github/README.md)
   * [Frontend](02-frontend/README.md)
-  * [Spring Boot](05-spring-boot/README.md)
   * [Drupal home](06-drupal/README.md)
   * [Drupal architecture](06-drupal/architecture.md)
   * [Drupal interview Q&A](06-drupal/interview-questions.md)
