@@ -1,65 +1,28 @@
 * [Home](README.md)
+
+* [Spring Interview Home](05-spring-boot/interview/README.md)
+* [Spring Annotations](05-spring-boot/interview/annotations.md)
+* [Spring Core Basics](05-spring-boot/interview/core-basics.md)
+* [Spring IoC / DI](05-spring-boot/interview/ioc-di.md)
+* [Spring REST](05-spring-boot/interview/rest-web.md)
+* [Spring JPA](05-spring-boot/interview/jpa-hibernate.md)
+* [Spring Security](05-spring-boot/interview/security.md)
+* [Spring Tricks](05-spring-boot/interview/tricks.md)
+* [Spring Q&A Bank](05-spring-boot/interview/interview-qa.md)
+* [Spring Daily Revision](05-spring-boot/interview/daily-revision.md)
+* [Spring projects home](05-spring-boot/README.md)
+
+* [OOPs home](03-dsa-and-interview/oops/README.md)
+* [OOPs daily revision](03-dsa-and-interview/oops/daily-revision.md)
+* [OOPs pillars](03-dsa-and-interview/oops/pillars.md)
+* [OOPs advanced](03-dsa-and-interview/oops/04-advanced-oops-interview.md)
+
+* [Interview roadmap](03-dsa-and-interview/INTERVIEW-PREP.md)
+* [DSA hub](03-dsa-and-interview/README.md)
+* [Concepts](03-dsa-and-interview/concepts/README.md)
+* [Algorithms](03-dsa-and-interview/algorithms/README.md)
+* [LeetCode](04-leetcode/README.md)
+
 * [How to add notes](HOW-TO-ADD-CONTENT.md)
-* [Code on GitHub](https://github.com/sys32805/learning-hub)
-
-* **Interview prep**
-  * [Roadmap](03-dsa-and-interview/INTERVIEW-PREP.md)
-  * [DSA hub](03-dsa-and-interview/README.md)
-
-* **Spring Boot**
-  * [Spring home](05-spring-boot/README.md)
-  * [Interview home](05-spring-boot/interview/README.md)
-  * [Daily revision](05-spring-boot/interview/daily-revision.md)
-  * [Annotations](05-spring-boot/interview/annotations.md)
-  * [Core basics](05-spring-boot/interview/core-basics.md)
-  * [IoC / DI / Beans](05-spring-boot/interview/ioc-di.md)
-  * [REST & Web](05-spring-boot/interview/rest-web.md)
-  * [JPA / Hibernate](05-spring-boot/interview/jpa-hibernate.md)
-  * [Security](05-spring-boot/interview/security.md)
-  * [Trick questions](05-spring-boot/interview/tricks.md)
-  * [Full Q&A bank](05-spring-boot/interview/interview-qa.md)
-
-* **OOPs**
-  * [OOPs home (all topics)](03-dsa-and-interview/oops/README.md)
-  * [Daily revision](03-dsa-and-interview/oops/daily-revision.md)
-  * [Pillars](03-dsa-and-interview/oops/pillars.md)
-  * [Inheritance tricks](03-dsa-and-interview/oops/inheritance-tricks.md)
-  * [Polymorphism tricks](03-dsa-and-interview/oops/polymorphism-tricks.md)
-  * [Abstract vs Interface](03-dsa-and-interview/oops/abstract-vs-interface.md)
-  * [equals / hashCode](03-dsa-and-interview/oops/equals-hashcode-immutable.md)
-  * [SOLID](03-dsa-and-interview/oops/solid.md)
-  * [Exceptions](03-dsa-and-interview/oops/exceptions-tricks.md)
-  * [Multithreading](03-dsa-and-interview/oops/multithreading-tricks.md)
-  * [Advanced + code](03-dsa-and-interview/oops/04-advanced-oops-interview.md)
-
-* **Concepts**
-  * [Concepts home](03-dsa-and-interview/concepts/README.md)
-  * [Recursion](03-dsa-and-interview/concepts/recursion.md)
-  * [Bit manipulation](03-dsa-and-interview/concepts/bit-manipulation.md)
-  * [Sliding window](03-dsa-and-interview/concepts/sliding-window.md)
-  * [Data structures](03-dsa-and-interview/concepts/data-structures.md)
-  * [Collections](03-dsa-and-interview/concepts/collections.md)
-  * [Java 8](03-dsa-and-interview/concepts/java8.md)
-
-* **Algorithms**
-  * [Algorithms home](03-dsa-and-interview/algorithms/README.md)
-  * [Arrays](03-dsa-and-interview/algorithms/arrays.md)
-  * [Strings](03-dsa-and-interview/algorithms/strings.md)
-  * [Linked list](03-dsa-and-interview/algorithms/linked-list.md)
-  * [Stack & Queue](03-dsa-and-interview/algorithms/stack-queue.md)
-  * [Binary search](03-dsa-and-interview/algorithms/binary-search.md)
-  * [Trees](03-dsa-and-interview/algorithms/trees.md)
-  * [Graphs](03-dsa-and-interview/algorithms/graphs.md)
-  * [Dynamic programming](03-dsa-and-interview/algorithms/dp.md)
-
-* **LeetCode**
-  * [Overview](04-leetcode/README.md)
-  * [Problems index](04-leetcode/Leetcode/README.md)
-
-* **Other**
-  * [GitHub basics](01-github/README.md)
-  * [Frontend](02-frontend/README.md)
-  * [Drupal home](06-drupal/README.md)
-  * [Drupal architecture](06-drupal/architecture.md)
-  * [Drupal interview Q&A](06-drupal/interview-questions.md)
-  * [Drupal auth Q&A](06-drupal/auth-interview.md)
+* [GitHub repo](https://github.com/sys32805/learning-hub)
+* [Drupal](06-drupal/README.md)

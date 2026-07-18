@@ -5,41 +5,65 @@
   <title>Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
   <style>
     :root { --theme-color: #0f766e; }
-    .markdown-section { max-width: 920px; line-height: 1.65; }
+    .markdown-section { max-width: 920px; line-height: 1.65; padding-top: 12px; }
     .markdown-section table { display: table; width: 100%; }
     .markdown-section pre { border-radius: 8px; }
-    /* Keep menu open & obvious */
-    .sidebar { padding-top: 0; }
-    .sidebar-toggle { background-color: transparent; }
     .sidebar-toggle span { background-color: #0f766e; }
-    .app-nav { margin-right: 80px; }
-    .app-nav li { margin: 0 6px; }
     @media screen and (max-width: 768px) {
       .sidebar-toggle { display: block !important; }
     }
+    /* Always-visible quick links (does not depend on sidebar load) */
+    #quick-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0f766e;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+    }
+    #quick-nav strong { margin-right: 4px; }
+    #quick-nav a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    #quick-nav a:hover { opacity: 0.85; }
+    body { margin: 0; }
   </style>
 </head>
 <body>
+  <nav id="quick-nav">
+    <strong>Quick:</strong>
+    <a href="#/">Home</a>
+    <a href="#/05-spring-boot/interview/README">Spring Interview</a>
+    <a href="#/05-spring-boot/interview/annotations">Annotations</a>
+    <a href="#/05-spring-boot/interview/core-basics">Core</a>
+    <a href="#/05-spring-boot/interview/interview-qa">Spring Q&amp;A</a>
+    <a href="#/03-dsa-and-interview/oops/README">OOPs</a>
+    <a href="#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
+  </nav>
   <div id="app">Loading…</div>
   <script>
     window.$docsify = {
       name: 'Learning Hub',
       repo: 'sys32805/learning-hub',
-      // GitHub project pages live under /learning-hub/
       basePath: '/learning-hub/',
       homepage: 'README.md',
       loadSidebar: true,
       loadNavbar: true,
-      subMaxLevel: 2,
-      // MUST include /learning-hub/ — bare /_sidebar.md 404s on github.io root
-      // cache-bust query so browsers pick up menu updates
+      subMaxLevel: 3,
       alias: {
-        '/.*/_sidebar.md': '/learning-hub/_sidebar.md?v=20260718c',
-        '/.*/_navbar.md': '/learning-hub/_navbar.md?v=20260718c'
+        '/.*/_sidebar.md': '/learning-hub/_sidebar.md',
+        '/.*/_navbar.md': '/learning-hub/_navbar.md'
       },
       requestHeaders: {
         'cache-control': 'no-cache'
@@ -47,13 +71,11 @@
       auto2top: true,
       relativePath: false,
       routerMode: 'hash',
-      // Do NOT use custom 404 — it hid real routing errors
       notFoundPage: false,
       search: {
         placeholder: 'Search notes…',
         noData: 'No results',
-        depth: 3,
-        pathNamespaces: ['/']
+        depth: 3
       },
       copyCode: { buttonText: 'Copy', successText: 'Copied' },
       pagination: {
