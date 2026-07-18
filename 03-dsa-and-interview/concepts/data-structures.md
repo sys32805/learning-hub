@@ -61,5 +61,5 @@ return -1;
 
 ## Next
 
-- [Algorithms home](../algorithms/README.md)
-- [Concepts home](README.md)
+- [Algorithms home](/03-dsa-and-interview/algorithms/README)
+- [Concepts home](/03-dsa-and-interview/concepts/README)

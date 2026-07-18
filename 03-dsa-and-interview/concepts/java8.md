@@ -43,5 +43,5 @@ List<String> result = names.stream()
 
 ## Next
 
-- [Concepts home](README.md)
-- OOPs functional interfaces note: [OOPs advanced](../oops/04-advanced-oops-interview.md)
+- [Concepts home](/03-dsa-and-interview/concepts/README)
+- OOPs functional interfaces note: [OOPs advanced](/03-dsa-and-interview/oops/04-advanced-oops-interview)

@@ -4,10 +4,10 @@
 
 ## Start here (site pages)
 
-1. [04-advanced-oops-interview.md](04-advanced-oops-interview.md) — understanding + code  
-2. [01-oops-basics.md](01-oops-basics.md) — Q&A  
-3. [02-exception-handling.md](02-exception-handling.md)  
-4. [03-multithreading.md](03-multithreading.md)  
+1. [04-advanced-oops-interview.md](/03-dsa-and-interview/oops/04-advanced-oops-interview) — understanding + code  
+2. [01-oops-basics.md](/03-dsa-and-interview/oops/01-oops-basics) — Q&A  
+3. [02-exception-handling.md](/03-dsa-and-interview/oops/02-exception-handling)  
+4. [03-multithreading.md](/03-dsa-and-interview/oops/03-multithreading)  
 
 ## Examples (open Java on GitHub)
 

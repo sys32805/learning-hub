@@ -36,6 +36,6 @@ for (int i = 1; i < a.length; i++) {
 
 ## Related on site
 
-- Concepts: [data-structures.md](../concepts/data-structures.md)  
-- LeetCode: [problems](../../04-leetcode/Leetcode/README.md)  
-- Next topic: [strings.md](strings.md)
+- Concepts: [data-structures.md](/03-dsa-and-interview/concepts/data-structures)  
+- LeetCode: [problems](/04-leetcode/Leetcode/README)  
+- Next topic: [strings.md](/03-dsa-and-interview/algorithms/strings)

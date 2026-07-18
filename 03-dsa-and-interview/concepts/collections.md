@@ -32,5 +32,5 @@ Also see interview notes under concepts: [interview/](https://github.com/sys3280
 
 ## Next
 
-- [Java 8 streams](java8.md) (collections + streams together)
-- [Concepts home](README.md)
+- [Java 8 streams](/03-dsa-and-interview/concepts/java8) (collections + streams together)
+- [Concepts home](/03-dsa-and-interview/concepts/README)

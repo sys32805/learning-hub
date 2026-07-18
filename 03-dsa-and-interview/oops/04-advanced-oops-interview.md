@@ -2,7 +2,7 @@
 
 Read each section in order. For every topic: **idea → why interviewers ask → code → takeaway**.
 
-Related: [01-oops-basics.md](01-oops-basics.md) | [examples on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples)
+Related: [01-oops-basics.md](/03-dsa-and-interview/oops/01-oops-basics) | [examples on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples)
 
 ---
 

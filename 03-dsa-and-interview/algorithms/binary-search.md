@@ -32,4 +32,4 @@ while (lo <= hi) {
 
 ## Next
 
-[trees.md](trees.md)
+[trees.md](/03-dsa-and-interview/algorithms/trees)

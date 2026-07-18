@@ -10,17 +10,17 @@ Use this path every day. Notes on the **site**, code on **GitHub**, practice in 
 
 | Day | Focus | Open on site | Code |
 |-----|--------|--------------|------|
-| 1 | OOPs pillars + overload/override | [Advanced OOPs](oops/04-advanced-oops-interview.md) | [examples](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples) |
-| 2 | Collections + Java 8 | [Collections](concepts/collections.md) · [Java 8](concepts/java8.md) | [Java8 folder](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/Java8) |
-| 3 | Arrays + hashing | [Arrays drill](algorithms/arrays.md) | [array package](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/array) |
-| 4 | Strings + sliding window | [Strings](algorithms/strings.md) · [Window](concepts/sliding-window.md) | [string](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/string) |
-| 5 | Linked list + stack/queue | [LL](algorithms/linked-list.md) · [Stack](algorithms/stack-queue.md) | [linklist](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/linklist) |
-| 6 | Trees + binary search | [Trees](algorithms/trees.md) · [BS](algorithms/binary-search.md) | [tree](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/tree) |
-| 7 | Graphs or DP + 2 LeetCode | [Graphs](algorithms/graphs.md) · [DP](algorithms/dp.md) · [LeetCode](../04-leetcode/README.md) | [LeetCode folder](https://github.com/sys32805/learning-hub/tree/main/04-leetcode/Leetcode) |
+| 1 | OOPs pillars + overload/override | [Advanced OOPs](/03-dsa-and-interview/oops/04-advanced-oops-interview) | [examples](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples) |
+| 2 | Collections + Java 8 | [Collections](/03-dsa-and-interview/concepts/collections) · [Java 8](/03-dsa-and-interview/concepts/java8) | [Java8 folder](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts/Java8) |
+| 3 | Arrays + hashing | [Arrays drill](/03-dsa-and-interview/algorithms/arrays) | [array package](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/array) |
+| 4 | Strings + sliding window | [Strings](/03-dsa-and-interview/algorithms/strings) · [Window](/03-dsa-and-interview/concepts/sliding-window) | [string](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/string) |
+| 5 | Linked list + stack/queue | [LL](/03-dsa-and-interview/algorithms/linked-list) · [Stack](/03-dsa-and-interview/algorithms/stack-queue) | [linklist](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/linklist) |
+| 6 | Trees + binary search | [Trees](/03-dsa-and-interview/algorithms/trees) · [BS](/03-dsa-and-interview/algorithms/binary-search) | [tree](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/tree) |
+| 7 | Graphs or DP + 2 LeetCode | [Graphs](/03-dsa-and-interview/algorithms/graphs) · [DP](/03-dsa-and-interview/algorithms/dp) · [LeetCode](/04-leetcode/README) | [LeetCode folder](https://github.com/sys32805/learning-hub/tree/main/04-leetcode/Leetcode) |
 
 ---
 
-## Must-know theory (say out loud)
+## Must-know theory
 
 1. Four pillars + abstract class vs interface  
 2. Overloading vs overriding + method hiding  
@@ -31,7 +31,7 @@ Use this path every day. Notes on the **site**, code on **GitHub**, practice in 
 7. BFS vs DFS  
 8. When to use DP  
 
-Site pages: [OOPs home](oops/README.md) · [Concepts home](concepts/README.md)
+[OOPs home](/03-dsa-and-interview/oops/README) · [Concepts home](/03-dsa-and-interview/concepts/README)
 
 ---
 
@@ -39,13 +39,13 @@ Site pages: [OOPs home](oops/README.md) · [Concepts home](concepts/README.md)
 
 | Pattern | Site page |
 |---------|-----------|
-| Two pointers / array | [arrays.md](algorithms/arrays.md) |
-| Sliding window | [sliding-window.md](concepts/sliding-window.md) |
-| Binary search | [binary-search.md](algorithms/binary-search.md) |
-| Linked list reverse / cycle | [linked-list.md](algorithms/linked-list.md) |
-| Tree DFS / BFS | [trees.md](algorithms/trees.md) |
-| Graph BFS / Dijkstra basics | [graphs.md](algorithms/graphs.md) |
-| Classic DP (knapsack, LIS, coins) | [dp.md](algorithms/dp.md) |
+| Arrays / two pointers | [arrays](/03-dsa-and-interview/algorithms/arrays) |
+| Sliding window | [sliding-window](/03-dsa-and-interview/concepts/sliding-window) |
+| Binary search | [binary-search](/03-dsa-and-interview/algorithms/binary-search) |
+| Linked list | [linked-list](/03-dsa-and-interview/algorithms/linked-list) |
+| Trees | [trees](/03-dsa-and-interview/algorithms/trees) |
+| Graphs | [graphs](/03-dsa-and-interview/algorithms/graphs) |
+| DP | [dp](/03-dsa-and-interview/algorithms/dp) |
 
 ---
 
@@ -53,6 +53,6 @@ Site pages: [OOPs home](oops/README.md) · [Concepts home](concepts/README.md)
 
 1. Read **one** concept / OOPs section on the site  
 2. Open **one** Java file on GitHub → rewrite from memory  
-3. Solve **one** LeetCode (or re-solve an old one)  
+3. Solve **one** LeetCode  
 
-Back to [DSA hub](README.md)
+[DSA hub](/03-dsa-and-interview/README)

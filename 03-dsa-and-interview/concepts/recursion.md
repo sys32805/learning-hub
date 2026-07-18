@@ -64,4 +64,4 @@ private int fib(int n) {
 ## Next
 
 - More recursion drills: [algorithms → recursion](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/recursion)
-- Back to [Concepts home](README.md)
+- Back to [Concepts home](/03-dsa-and-interview/concepts/README)

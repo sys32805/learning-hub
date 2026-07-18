@@ -27,4 +27,4 @@ for (int x : nums) {
 
 ## Next
 
-[binary-search.md](binary-search.md)
+[binary-search.md](/03-dsa-and-interview/algorithms/binary-search)

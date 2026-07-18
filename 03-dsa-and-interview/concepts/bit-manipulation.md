@@ -40,4 +40,4 @@ System.out.println(binary); // 101
 ## Next
 
 - [algorithms → bits](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/bits)
-- [Concepts home](README.md)
+- [Concepts home](/03-dsa-and-interview/concepts/README)

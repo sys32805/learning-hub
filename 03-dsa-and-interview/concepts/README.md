@@ -6,17 +6,17 @@ Learn ideas here with short explanations and examples. Click **Open on GitHub** 
 
 | Topic | What you learn | Page |
 |-------|----------------|------|
-| Recursion | Call stack, base case, factorial / Fibonacci | [Open page](recursion.md) |
-| Bit manipulation | Binary, flips, tricks | [Open page](bit-manipulation.md) |
-| Sliding window | Subarray / substring windows | [Open page](sliding-window.md) |
-| Data structures | Arrays, lists, stack, sort, tree | [Open page](data-structures.md) |
-| Java 8 | Streams, lambdas, functional interfaces | [Open page](java8.md) |
-| Collections | List / Set / Map practice | [Open page](collections.md) |
+| Recursion | Call stack, base case, factorial / Fibonacci | [Open page](/03-dsa-and-interview/concepts/recursion) |
+| Bit manipulation | Binary, flips, tricks | [Open page](/03-dsa-and-interview/concepts/bit-manipulation) |
+| Sliding window | Subarray / substring windows | [Open page](/03-dsa-and-interview/concepts/sliding-window) |
+| Data structures | Arrays, lists, stack, sort, tree | [Open page](/03-dsa-and-interview/concepts/data-structures) |
+| Java 8 | Streams, lambdas, functional interfaces | [Open page](/03-dsa-and-interview/concepts/java8) |
+| Collections | List / Set / Map practice | [Open page](/03-dsa-and-interview/concepts/collections) |
 
 ## How to use
 
 1. Read the topic page (this site).
 2. Open the linked GitHub file and re-type the code yourself.
-3. Drill the same idea in [Algorithms](../algorithms/README.md) then [LeetCode](../../04-leetcode/README.md).
+3. Drill the same idea in [Algorithms](/03-dsa-and-interview/algorithms/README) then [LeetCode](/04-leetcode/README).
 
 **All concept source folders:** [GitHub concepts/](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)

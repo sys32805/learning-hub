@@ -5,19 +5,19 @@
 
 ## Start interview prep here
 
-1. [Interview roadmap](03-dsa-and-interview/INTERVIEW-PREP.md)  
-2. [DSA & Interview hub](03-dsa-and-interview/README.md)  
-3. [OOPs](03-dsa-and-interview/oops/README.md) → [Concepts](03-dsa-and-interview/concepts/README.md) → [Algorithms](03-dsa-and-interview/algorithms/README.md) → [LeetCode](04-leetcode/README.md)
+1. [Interview roadmap](/03-dsa-and-interview/INTERVIEW-PREP)  
+2. [DSA & Interview hub](/03-dsa-and-interview/README)  
+3. [OOPs](/03-dsa-and-interview/oops/README) → [Concepts](/03-dsa-and-interview/concepts/README) → [Algorithms](/03-dsa-and-interview/algorithms/README) → [LeetCode](/04-leetcode/README)
 
-How to add notes: [HOW-TO-ADD-CONTENT.md](HOW-TO-ADD-CONTENT.md)
+How to add notes: [HOW-TO-ADD-CONTENT](/HOW-TO-ADD-CONTENT)
 
 ## All tracks
 
 | Track | Site | GitHub |
 |-------|------|--------|
-| Interview / DSA | [03-dsa-and-interview/README.md](03-dsa-and-interview/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview) |
-| LeetCode | [04-leetcode/README.md](04-leetcode/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/04-leetcode) |
-| Spring Boot | [05-spring-boot/README.md](05-spring-boot/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot) |
-| GitHub basics | [01-github/README.md](01-github/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/01-github) |
-| Frontend | [02-frontend/README.md](02-frontend/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/02-frontend) |
-| Drupal | [06-drupal/README.md](06-drupal/README.md) | [Open](https://github.com/sys32805/learning-hub/tree/main/06-drupal) |
+| Interview / DSA | [Open](/03-dsa-and-interview/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview) |
+| LeetCode | [Open](/04-leetcode/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/04-leetcode) |
+| Spring Boot | [Open](/05-spring-boot/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot) |
+| GitHub basics | [Open](/01-github/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/01-github) |
+| Frontend | [Open](/02-frontend/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/02-frontend) |
+| Drupal | [Open](/06-drupal/README) | [GitHub](https://github.com/sys32805/learning-hub/tree/main/06-drupal) |

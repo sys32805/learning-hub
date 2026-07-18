@@ -31,5 +31,5 @@ for (int a = 1; a <= amount; a++) {
 
 ## Related
 
-- Recursion first: [concepts/recursion.md](../concepts/recursion.md)  
-- Back to [Interview roadmap](../INTERVIEW-PREP.md)
+- Recursion first: [concepts/recursion.md](/03-dsa-and-interview/concepts/recursion)  
+- Back to [Interview roadmap](/03-dsa-and-interview/INTERVIEW-PREP)

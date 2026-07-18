@@ -34,5 +34,5 @@ for (int right = 0; right < s.length(); right++) {
 
 ## Related
 
-- [Sliding window concept](../concepts/sliding-window.md)  
-- Next: [linked-list.md](linked-list.md)
+- [Sliding window concept](/03-dsa-and-interview/concepts/sliding-window)  
+- Next: [linked-list.md](/03-dsa-and-interview/algorithms/linked-list)

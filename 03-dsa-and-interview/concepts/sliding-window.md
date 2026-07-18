@@ -40,5 +40,5 @@ for (int i = k; i < a.length; i++) {
 
 ## Next
 
-- [Concepts home](README.md)
-- Practice similar problems in [04-leetcode](../../04-leetcode/README.md)
+- [Concepts home](/03-dsa-and-interview/concepts/README)
+- Practice similar problems in [04-leetcode](/04-leetcode/README)
