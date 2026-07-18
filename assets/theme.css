@@ -170,14 +170,13 @@ html, body {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* One clean row: links left, controls right */
+/* One chrome: links row + buttons row (buttons never clip off-screen) */
 #top-chrome-inner {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 14px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
   padding: 10px 16px;
-  min-height: 52px;
   background: var(--lh-accent-deep);
 }
 
@@ -187,8 +186,7 @@ html, body {
   gap: 8px 12px;
   align-items: center;
   font-size: 13px;
-  flex: 1 1 220px;
-  min-width: 0;
+  width: 100%;
   order: 1;
 }
 
@@ -207,12 +205,15 @@ html, body {
 
 #app-toolbar {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  flex: 0 0 auto;
-  margin-left: auto;
+  justify-content: flex-end;
+  width: 100%;
   order: 2;
+  margin-left: 0;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 #app-toolbar .nav-btn {
@@ -225,6 +226,7 @@ html, body {
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 #app-toolbar .nav-btn:hover {
@@ -238,8 +240,8 @@ html, body {
 }
 
 #app-toolbar #logout-btn {
-  background: rgba(248, 113, 113, 0.25);
-  border-color: rgba(254, 202, 202, 0.55);
+  background: rgba(248, 113, 113, 0.35);
+  border-color: rgba(254, 202, 202, 0.7);
 }
 
 #app-toolbar #logout-btn:hover {
@@ -304,97 +306,123 @@ body.study-mode .markdown-section {
   cursor: pointer;
 }
 
-/* —— Docsify sidebar (force readable; vue.css defaults to white) —— */
-.sidebar,
-.sidebar .sidebar-nav,
-.sidebar > h1.app-name,
-.sidebar .app-name,
-.sidebar .search,
-.sidebar .search .input-wrap {
-  background: #0f1714 !important;
-  background-color: #0f1714 !important;
-  color: #e7eeea !important;
-  border-color: #2a3a34 !important;
-}
-
+/* —— Docsify sidebar: theme-scoped (fixes light-mode white-on-white) —— */
 .sidebar {
-  border-right: 1px solid #2a3a34 !important;
   top: var(--lh-chrome-h, 56px) !important;
   padding-top: 12px !important;
 }
 
-.sidebar .app-name-link,
-.sidebar .app-name a,
-.sidebar h1,
-.sidebar h1 a {
-  color: #2dd4bf !important;
+.sidebar-toggle span {
+  background-color: #0f766e !important;
 }
 
-.sidebar ul,
-.sidebar li,
-.sidebar p,
-.sidebar span {
-  color: #c5d4cc !important;
+/* DARK sidebar */
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .sidebar .sidebar-nav,
+html[data-theme="dark"] .sidebar .app-name,
+html[data-theme="dark"] .sidebar .search,
+html[data-theme="dark"] .sidebar .search .input-wrap,
+html:not([data-theme="light"]) .sidebar,
+html:not([data-theme="light"]) .sidebar .sidebar-nav,
+html:not([data-theme="light"]) .sidebar .app-name,
+html:not([data-theme="light"]) .sidebar .search {
+  background: #0f1714 !important;
+  background-color: #0f1714 !important;
+  color: #e8f0ec !important;
+  border-color: #2a3a34 !important;
+}
+
+html[data-theme="dark"] .sidebar,
+html:not([data-theme="light"]) .sidebar {
+  border-right: 1px solid #2a3a34 !important;
+}
+
+html[data-theme="dark"] .sidebar a,
+html[data-theme="dark"] .sidebar li,
+html[data-theme="dark"] .sidebar p,
+html[data-theme="dark"] .sidebar span,
+html[data-theme="dark"] .sidebar-nav a,
+html[data-theme="dark"] .sidebar-nav li > p,
+html:not([data-theme="light"]) .sidebar a,
+html:not([data-theme="light"]) .sidebar li,
+html:not([data-theme="light"]) .sidebar p,
+html:not([data-theme="light"]) .sidebar span,
+html:not([data-theme="light"]) .sidebar-nav a {
+  color: #d7e4dd !important;
   background: transparent !important;
-}
-
-.sidebar ul li a,
-.sidebar-nav a,
-.sidebar-nav li > p {
-  color: #c5d4cc !important;
   font-weight: 500 !important;
 }
 
-.sidebar ul li.active > a,
-.sidebar ul li a:hover,
-.sidebar-nav a:hover {
+html[data-theme="dark"] .sidebar .app-name a,
+html[data-theme="dark"] .sidebar h1 a,
+html:not([data-theme="light"]) .sidebar .app-name a,
+html:not([data-theme="light"]) .sidebar h1 a {
   color: #2dd4bf !important;
-  background: rgba(45, 212, 191, 0.1) !important;
 }
 
-.sidebar .search input,
-.sidebar input[type="search"],
-.sidebar input {
+html[data-theme="dark"] .sidebar a:hover,
+html[data-theme="dark"] .sidebar li.active > a,
+html:not([data-theme="light"]) .sidebar a:hover,
+html:not([data-theme="light"]) .sidebar li.active > a {
+  color: #2dd4bf !important;
+  background: rgba(45, 212, 191, 0.12) !important;
+}
+
+html[data-theme="dark"] .sidebar input,
+html:not([data-theme="light"]) .sidebar input {
   background: #1a2420 !important;
-  color: #e7eeea !important;
+  color: #e8f0ec !important;
   border: 1px solid #2a3a34 !important;
 }
 
-.sidebar .search input::placeholder {
-  color: #8fa399 !important;
+/* LIGHT sidebar — high contrast dark text (this was broken before) */
+html[data-theme="light"] .sidebar,
+html[data-theme="light"] .sidebar .sidebar-nav,
+html[data-theme="light"] .sidebar .app-name,
+html[data-theme="light"] .sidebar .search,
+html[data-theme="light"] .sidebar .search .input-wrap {
+  background: #eef3f0 !important;
+  background-color: #eef3f0 !important;
+  color: #0f1a16 !important;
+  border-color: #c5d4cc !important;
 }
 
-.sidebar-toggle span {
-  background-color: #2dd4bf !important;
+html[data-theme="light"] .sidebar {
+  border-right: 1px solid #c5d4cc !important;
 }
 
-/* Light theme sidebar still readable (not pure white wash) */
-[data-theme="light"] .sidebar,
-[data-theme="light"] .sidebar .sidebar-nav,
-[data-theme="light"] .sidebar .search,
-[data-theme="light"] .sidebar .search .input-wrap {
-  background: #e8efeb !important;
-  background-color: #e8efeb !important;
-  color: #14201c !important;
+html[data-theme="light"] .sidebar a,
+html[data-theme="light"] .sidebar li,
+html[data-theme="light"] .sidebar p,
+html[data-theme="light"] .sidebar span,
+html[data-theme="light"] .sidebar ul,
+html[data-theme="light"] .sidebar-nav a,
+html[data-theme="light"] .sidebar-nav li > p {
+  color: #0f1a16 !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
 }
 
-[data-theme="light"] .sidebar ul li a,
-[data-theme="light"] .sidebar-nav a,
-[data-theme="light"] .sidebar-nav li > p,
-[data-theme="light"] .sidebar li,
-[data-theme="light"] .sidebar p {
-  color: #1f2e28 !important;
+html[data-theme="light"] .sidebar .app-name a,
+html[data-theme="light"] .sidebar h1 a {
+  color: #0b5f58 !important;
 }
 
-[data-theme="light"] .sidebar .app-name-link,
-[data-theme="light"] .sidebar h1 a {
-  color: #0f766e !important;
+html[data-theme="light"] .sidebar a:hover,
+html[data-theme="light"] .sidebar li.active > a {
+  color: #0b5f58 !important;
+  background: rgba(15, 118, 110, 0.12) !important;
 }
 
-[data-theme="light"] .sidebar .search input {
+html[data-theme="light"] .sidebar input {
   background: #ffffff !important;
-  color: #14201c !important;
-  border: 1px solid #d5e0da !important;
+  color: #0f1a16 !important;
+  border: 1px solid #c5d4cc !important;
+}
+
+html[data-theme="light"] .sidebar input::placeholder {
+  color: #5c6f66 !important;
 }
 
 body,
