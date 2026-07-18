@@ -1,5 +1,6 @@
 * [Home](/)
 * [How to add notes](HOW-TO-ADD-CONTENT.md)
+* [Full repo on GitHub](https://github.com/sys32805/learning-hub)
 
 * **01 GitHub**
   * [Overview](01-github/README.md)

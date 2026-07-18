@@ -1,36 +1,33 @@
 # Java interview practice
 
-Java-only algorithm implementations for interview prep (`src/com/interview/...`).
+Java-only algorithm implementations (`src/com/interview/...`).
+
+**View all Java source on GitHub:** [algorithms/src](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview)
 
 Run with JDK 8+ and Gradle (`./gradlew build` or open in IntelliJ).
 
 ## Practice order (recommended)
 
-| Order | Topic | Package | Count |
-|------:|-------|---------|------:|
-| 1 | Arrays | `src/com/interview/array` | 76 |
-| 2 | Strings | `src/com/interview/string` | 24 |
-| 3 | Linked list | `src/com/interview/linklist` | 34 |
-| 4 | Stack / Queue | `src/com/interview/stackqueue` | 10 |
-| 5 | Binary search | `src/com/interview/binarysearch` | 17 |
-| 6 | Sorting | `src/com/interview/sort` | 9 |
-| 7 | Recursion | `src/com/interview/recursion` | 31 |
-| 8 | Trees | `src/com/interview/tree` | 78 |
-| 9 | Graphs | `src/com/interview/graph` | 47 |
-| 10 | Dynamic programming | `src/com/interview/dynamic` | 61 |
-| 11 | Bits | `src/com/interview/bits` | 22 |
-| 12 | Numbers / math | `src/com/interview/number` | 31 |
-| 13 | Multi-array / matrix | `src/com/interview/multiarray` | 15 |
-| 14 | Multithreading | `src/com/interview/multithreaded` | 11 |
-
-Also useful: `misc`, `geometry`, `suffixprefix`, `regex`, `random`.
+| Order | Topic | Package | Count | Code on GitHub |
+|------:|-------|---------|------:|----------------|
+| 1 | Arrays | `array` | 76 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/array) |
+| 2 | Strings | `string` | 24 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/string) |
+| 3 | Linked list | `linklist` | 34 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/linklist) |
+| 4 | Stack / Queue | `stackqueue` | 10 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/stackqueue) |
+| 5 | Binary search | `binarysearch` | 17 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/binarysearch) |
+| 6 | Sorting | `sort` | 9 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/sort) |
+| 7 | Recursion | `recursion` | 31 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/recursion) |
+| 8 | Trees | `tree` | 78 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/tree) |
+| 9 | Graphs | `graph` | 47 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/graph) |
+| 10 | Dynamic programming | `dynamic` | 61 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/dynamic) |
+| 11 | Bits | `bits` | 22 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/bits) |
+| 12 | Numbers / math | `number` | 31 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/number) |
+| 13 | Multi-array / matrix | `multiarray` | 15 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multiarray) |
+| 14 | Multithreading | `multithreaded` | 11 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multithreaded) |
 
 ## How to practice
 
-1. Learn the idea in [`../concepts`](../concepts/) (datastructures, recursion, slidingWindow, Java8).
-2. Open **one** Java class here — read it, then re-implement without looking.
-3. Solve a matching problem in [`../../04-leetcode`](../../04-leetcode/).
+1. Learn the idea in [`../concepts`](../concepts/) — [concepts on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)
+2. Open **one** Java class (use the GitHub links above), then re-implement without looking
+3. Solve a matching problem in [`../../04-leetcode`](../../04-leetcode/)
 
-## Not included
-
-C++ and Python copies were removed so this track stays Java-focused.
