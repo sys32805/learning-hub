@@ -2,6 +2,36 @@
 
 Your site updates when you **push to GitHub**. Phone/laptop can then open the same URL.
 
+**Site:** https://sys32805.github.io/learning-hub/
+
+## Login (personal study gate)
+
+The site shows a **login screen** before notes. Session lasts until you close the tab (or click Logout).
+
+| | |
+|--|--|
+| Default username | `learner` |
+| Default password | `Learn@2026` |
+
+**Change password after first use:**
+
+1. Create a SHA-256 hash:
+
+```bash
+node -e "console.log(require('crypto').createHash('sha256').update('YOUR_NEW_PASSWORD').digest('hex'))"
+```
+
+2. Edit [`assets/auth-config.js`](assets/auth-config.js) — set `username` and `passwordSha256`.
+3. Push to GitHub.
+
+**Note:** This locks the **website UI**. On a public repo, raw `.md` files on GitHub can still be opened directly. Fine for focused personal study; use a private repo if you need stronger privacy.
+
+## Theme
+
+- Default: **dark teal** (night study).
+- Use **Light mode / Dark mode** on the login screen or in the top bar after login.
+- Preference is saved in the browser (`localStorage`).
+
 ## Daily workflow
 
 1. Add or edit a file under the right track (prefer **Markdown** `.md`).
@@ -40,4 +70,4 @@ git push
 npx --yes docsify-cli serve .
 ```
 
-Then open `http://localhost:3000`.
+Then open `http://localhost:3000`. Local preview still uses paths under `/learning-hub/` for assets — prefer the GitHub Pages URL for the real login + theme experience.
