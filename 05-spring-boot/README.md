@@ -27,3 +27,5 @@ Checklist: [daily-revision](05-spring-boot/interview/daily-revision.md)
 | 3 | [03-auth](03-auth/) | [Open](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot/03-auth) |
 
 Work through projects by topic (fundamentals → data → web → APIs → security → messaging → apps).
+
+Interview notes are **detailed** (explanations + code + tricks), not short one-liners.

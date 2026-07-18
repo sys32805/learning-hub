@@ -1,29 +1,28 @@
 # Spring Boot — interview home
 
-Segregated notes from **service companies** to **product**.  
-Revise **one topic per day**, then answer aloud.
+**Detailed explanations** (not just one-liners) — revise **one topic per day**, then answer aloud.
 
 **Code projects:** [05-spring-boot on GitHub](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot)
 
-## Daily revision order
+## Daily revision order (~25–40 min/topic)
 
-| Day | Topic | Page |
-|-----|--------|------|
-| 1 | Core Spring Boot | [core-basics](05-spring-boot/interview/core-basics.md) |
-| 2 | Annotations (must-know) | [annotations](05-spring-boot/interview/annotations.md) |
-| 3 | IoC / DI / Beans | [ioc-di](05-spring-boot/interview/ioc-di.md) |
-| 4 | REST & Web | [rest-web](05-spring-boot/interview/rest-web.md) |
-| 5 | JPA / Hibernate | [jpa-hibernate](05-spring-boot/interview/jpa-hibernate.md) |
-| 6 | Security | [security](05-spring-boot/interview/security.md) |
-| 7 | Trick questions | [tricks](05-spring-boot/interview/tricks.md) |
-| — | Full Q&A bank | [interview-qa](05-spring-boot/interview/interview-qa.md) |
-| — | Checklist | [daily-revision](05-spring-boot/interview/daily-revision.md) |
+| Day | Topic | What you’ll learn |
+|-----|--------|-------------------|
+| 1 | [Core basics](05-spring-boot/interview/core-basics.md) | Boot vs Spring, auto-config flow, starters, profiles, Actuator, architecture |
+| 2 | [Annotations](05-spring-boot/interview/annotations.md) | Every major annotation with **why + where + tricks** |
+| 3 | [IoC / DI / Beans](05-spring-boot/interview/ioc-di.md) | Lifecycle, scopes, proxies, circular deps |
+| 4 | [REST & Web](05-spring-boot/interview/rest-web.md) | Request flow, DTO, status codes, advice, filters |
+| 5 | [JPA / Hibernate](05-spring-boot/interview/jpa-hibernate.md) | Mapping, TX, N+1, OSIV, migrations |
+| 6 | [Security](05-spring-boot/interview/security.md) | Authn/Authz, filter chain, JWT, method security |
+| 7 | [Tricks](05-spring-boot/interview/tricks.md) + [Q&A bank](05-spring-boot/interview/interview-qa.md) | Drill speaking answers |
 
-## How to use (15–25 min/day)
+Checklist: [daily-revision](05-spring-boot/interview/daily-revision.md)
 
-1. Open **one** topic  
-2. Read + skim code snippets  
-3. Answer **trick Qs** without looking  
-4. Check answers  
+## How to study each page
 
-Projects for practice: [Spring-Boot-Advanced-Projects](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot/02-projects/Spring-Boot-Advanced-Projects)
+1. Read the **explanation** sections (not only tables)  
+2. Type / sketch one code sample from memory  
+3. Answer the **trick questions** out loud  
+4. Only then open the answer  
+
+Projects: [Spring-Boot-Advanced-Projects](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot/02-projects/Spring-Boot-Advanced-Projects)
