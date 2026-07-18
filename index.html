@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Learning Hub — sys32805</title>
+  <title>Learning Hub — Interview Prep</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal learning hub: Java OOPs, DSA, LeetCode, Spring Boot, Drupal" />
+  <meta name="description" content="Java interview prep: OOPs, DSA, LeetCode, Spring" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
   <style>
     :root { --theme-color: #0f766e; }
-    .markdown-section { max-width: 860px; }
+    .markdown-section { max-width: 900px; line-height: 1.65; }
     .markdown-section pre { border-radius: 8px; }
-    .markdown-section table { display: table; width: 100%; }
-    .app-nav a { margin: 0 8px; }
+    .markdown-section table { display: table; width: 100%; overflow: auto; }
+    .markdown-section a { font-weight: 600; }
+    .sidebar-nav > ul > li > p { font-weight: 700; margin: 12px 0 4px; }
   </style>
 </head>
 <body>
-  <div id="app">Loading learning hub…</div>
+  <div id="app">Loading interview prep…</div>
   <script>
     window.$docsify = {
-      name: 'Learning Hub',
+      name: 'Interview Prep Hub',
       repo: 'https://github.com/sys32805/learning-hub',
-      // Required for GitHub project pages: site lives under /learning-hub/
       basePath: '/learning-hub/',
       homepage: 'README.md',
       loadSidebar: true,
@@ -29,14 +29,15 @@
         '/.*/_sidebar.md': '/_sidebar.md'
       },
       auto2top: true,
-      relativePath: false,
+      // Links inside a page are relative to THAT page (fixes DSA in-folder links)
+      relativePath: true,
       subMaxLevel: 2,
       maxLevel: 3,
       search: {
-        placeholder: 'Search notes…',
+        placeholder: 'Search interview topics…',
         noData: 'No results',
         path: 'auto',
-        depth: 3
+        depth: 4
       },
       copyCode: {
         buttonText: 'Copy',
@@ -47,7 +48,8 @@
         previousText: 'Previous',
         nextText: 'Next',
         crossChapter: true
-      }
+      },
+      noEmoji: false
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>

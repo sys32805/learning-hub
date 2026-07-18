@@ -2,7 +2,7 @@
 
 Read each section in order. For every topic: **idea → why interviewers ask → code → takeaway**.
 
-Related: [01-oops-basics.txt](01-oops-basics.txt) | [examples/](examples/)
+Related: [01-oops-basics.md](01-oops-basics.md) | [examples on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples)
 
 ---
 
@@ -229,7 +229,7 @@ p.print(); // "color" — dynamic dispatch
 | Params | Must differ | Must match |
 | Inheritance | Optional | Required |
 
-Runnable demos: [OverloadingVsOverriding.java](examples/OverloadingVsOverriding.java)
+Runnable demos: [OverloadingVsOverriding.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/OverloadingVsOverriding.java)
 
 ---
 
@@ -255,7 +255,7 @@ ref.log("hi");        // parent: hi  (reference is Logger)
 FileLogger.log("hi"); // file: hi
 ```
 
-See [MethodHiding.java](examples/MethodHiding.java)
+See [MethodHiding.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/MethodHiding.java)
 
 ---
 
@@ -282,7 +282,7 @@ class Car {
 
 **Interview line:** Prefer composition unless there is a clear, stable IS-A hierarchy.
 
-Demo: [CompositionExample.java](examples/CompositionExample.java)
+Demo: [CompositionExample.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/CompositionExample.java)
 
 ---
 
@@ -329,7 +329,7 @@ for (Shape s : shapes) {
 
 This is the basis of Strategy / Template Method style design.
 
-Demo: [PolymorphismDemo.java](examples/PolymorphismDemo.java)
+Demo: [PolymorphismDemo.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/PolymorphismDemo.java)
 
 ---
 
@@ -453,7 +453,7 @@ class OrderService {
 }
 ```
 
-Demo: [SolidQuickDemo.java](examples/SolidQuickDemo.java)
+Demo: [SolidQuickDemo.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/SolidQuickDemo.java)
 
 ---
 
@@ -543,7 +543,7 @@ public final class UserId {
 
 **Contract:** if `a.equals(b)` then `a.hashCode() == b.hashCode()`. Break this → broken `HashMap`/`HashSet`.
 
-Demo: [EqualsHashCodeDemo.java](examples/EqualsHashCodeDemo.java)
+Demo: [EqualsHashCodeDemo.java](https://github.com/sys32805/learning-hub/blob/main/03-dsa-and-interview/oops/examples/EqualsHashCodeDemo.java)
 
 ---
 
@@ -568,4 +568,4 @@ Demo: [EqualsHashCodeDemo.java](examples/EqualsHashCodeDemo.java)
 - [ ] `equals`/`hashCode` contract  
 - [ ] Why no multiple class inheritance  
 
-Then open files under [examples/](examples/) and run them (`javac` + `java`, or IntelliJ).
+Then open files under [examples on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/oops/examples) and run them in IntelliJ.

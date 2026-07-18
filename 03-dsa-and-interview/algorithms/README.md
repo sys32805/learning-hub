@@ -1,33 +1,28 @@
-# Java interview practice
+# Algorithms — Java interview drills
 
-Java-only algorithm implementations (`src/com/interview/...`).
+Each topic page explains **what to practice** and links to real Java files on GitHub.
 
-**View all Java source on GitHub:** [algorithms/src](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview)
+**All packages:** [src/com/interview](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview)
 
-Run with JDK 8+ and Gradle (`./gradlew build` or open in IntelliJ).
+## Topics
 
-## Practice order (recommended)
+| Topic | Site page | Package on GitHub |
+|-------|-----------|-------------------|
+| Arrays | [arrays.md](arrays.md) | [array](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/array) |
+| Strings | [strings.md](strings.md) | [string](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/string) |
+| Linked list | [linked-list.md](linked-list.md) | [linklist](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/linklist) |
+| Stack & Queue | [stack-queue.md](stack-queue.md) | [stackqueue](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/stackqueue) |
+| Binary search | [binary-search.md](binary-search.md) | [binarysearch](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/binarysearch) |
+| Trees | [trees.md](trees.md) | [tree](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/tree) |
+| Graphs | [graphs.md](graphs.md) | [graph](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/graph) |
+| Dynamic programming | [dp.md](dp.md) | [dynamic](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/dynamic) |
 
-| Order | Topic | Package | Count | Code on GitHub |
-|------:|-------|---------|------:|----------------|
-| 1 | Arrays | `array` | 76 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/array) |
-| 2 | Strings | `string` | 24 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/string) |
-| 3 | Linked list | `linklist` | 34 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/linklist) |
-| 4 | Stack / Queue | `stackqueue` | 10 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/stackqueue) |
-| 5 | Binary search | `binarysearch` | 17 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/binarysearch) |
-| 6 | Sorting | `sort` | 9 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/sort) |
-| 7 | Recursion | `recursion` | 31 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/recursion) |
-| 8 | Trees | `tree` | 78 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/tree) |
-| 9 | Graphs | `graph` | 47 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/graph) |
-| 10 | Dynamic programming | `dynamic` | 61 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/dynamic) |
-| 11 | Bits | `bits` | 22 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/bits) |
-| 12 | Numbers / math | `number` | 31 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/number) |
-| 13 | Multi-array / matrix | `multiarray` | 15 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multiarray) |
-| 14 | Multithreading | `multithreaded` | 11 | [Open](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multithreaded) |
+Also on GitHub: [bits](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/bits) · [number](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/number) · [multiarray](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multiarray) · [multithreaded](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/multithreaded) · [sort](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/sort) · [recursion](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/algorithms/src/com/interview/recursion)
 
-## How to practice
+## How to drill
 
-1. Learn the idea in [Concepts](../concepts/README.md) — [concepts on GitHub](https://github.com/sys32805/learning-hub/tree/main/03-dsa-and-interview/concepts)
-2. Open **one** Java class (use the GitHub links above), then re-implement without looking
-3. Solve a matching problem in [04-leetcode](../../04-leetcode/README.md)
+1. Read the topic page  
+2. Open 1–2 GitHub files → rewrite without looking  
+3. Do a related [LeetCode](../../04-leetcode/README.md) problem  
 
+Back: [Interview roadmap](../INTERVIEW-PREP.md) · [DSA hub](../README.md)
