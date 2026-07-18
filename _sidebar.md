@@ -41,4 +41,7 @@
   * [GitHub basics](01-github/README.md)
   * [Frontend](02-frontend/README.md)
   * [Spring Boot](05-spring-boot/README.md)
-  * [Drupal](06-drupal/README.md)
+  * [Drupal home](06-drupal/README.md)
+  * [Drupal architecture](06-drupal/architecture.md)
+  * [Drupal interview Q&A](06-drupal/interview-questions.md)
+  * [Drupal auth Q&A](06-drupal/auth-interview.md)
