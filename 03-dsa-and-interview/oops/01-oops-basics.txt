@@ -1,0 +1,265 @@
+1. What are the four main principles of Object-Oriented Programming (OOP)?
+   - Answer: The four main principles are Encapsulation, Abstraction, Inheritance, and Polymorphism.
+
+2. Can you explain the concept of inheritance in OOP?
+   - Answer: Inheritance allows a class to inherit properties and methods from another class.
+   - Code Example:
+     ```java
+     class Animal {
+         void eat() {
+             System.out.println("This animal eats food.");
+         }
+     }
+
+     class Dog extends Animal {
+         void bark() {
+             System.out.println("The dog barks.");
+         }
+     }
+     ```
+
+3. What is polymorphism and how is it implemented in Java?
+   - Answer: Polymorphism allows methods to do different things based on the object it is acting upon. It is implemented through method overloading and method overriding.
+   - Code Example:
+     ```java
+     class Animal {
+         void sound() {
+             System.out.println("Animal makes a sound");
+         }
+     }
+
+     class Dog extends Animal {
+         void sound() {
+             System.out.println("Dog barks");
+         }
+     }
+
+     class Cat extends Animal {
+         void sound() {
+             System.out.println("Cat meows");
+         }
+     }
+     ```
+
+4. How does encapsulation improve code maintainability?
+   - Answer: Encapsulation hides the internal state of an object and requires all interaction to be performed through an object's methods, improving modularity and maintainability.
+   - Code Example:
+     ```java
+     class Person {
+         private String name;
+
+         public String getName() {
+             return name;
+         }
+
+         public void setName(String name) {
+             this.name = name;
+         }
+     }
+     ```
+
+5. What is the difference between an abstract class and an interface in Java?
+   - Answer: An abstract class can have both abstract and concrete methods, while an interface can only have abstract methods (until Java 8, which introduced default methods).
+   - Code Example:
+     ```java
+     abstract class Animal {
+         abstract void sound();
+     }
+
+     interface AnimalInterface {
+         void sound();
+     }
+     ```
+
+6. Can you explain the concept of method overloading and method overriding?
+   - Answer: Method overloading allows multiple methods with the same name but different parameters. Method overriding allows a subclass to provide a specific implementation of a method already defined in its superclass.
+   - Code Example:
+     ```java
+     class Math {
+         int add(int a, int b) {
+             return a + b;
+         }
+
+         int add(int a, int b, int c) {
+             return a + b + c;
+         }
+     }
+
+     class Animal {
+         void sound() {
+             System.out.println("Animal makes a sound");
+         }
+     }
+
+     class Dog extends Animal {
+         @Override
+         void sound() {
+             System.out.println("Dog barks");
+         }
+     }
+     ```
+
+7. What is the significance of the 'this' keyword in Java?
+   - Answer: The 'this' keyword refers to the current instance of the class.
+   - Code Example:
+     ```java
+     class Person {
+         private String name;
+
+         Person(String name) {
+             this.name = name;
+         }
+     }
+     ```
+
+8. How do constructors work in Java and what are their types?
+   - Answer: Constructors are special methods used to initialize objects. They can be default (no parameters) or parameterized.
+   - Code Example:
+     ```java
+     class Person {
+         private String name;
+
+         // Default constructor
+         Person() {
+             this.name = "Unknown";
+         }
+
+         // Parameterized constructor
+         Person(String name) {
+             this.name = name;
+         }
+     }
+     ```
+
+9. What is the difference between composition and inheritance?
+   - Answer: Inheritance is a "is-a" relationship, while composition is a "has-a" relationship.
+   - Code Example:
+     ```java
+     class Engine {
+         void start() {
+             System.out.println("Engine starts");
+         }
+     }
+
+     class Car {
+         private Engine engine;
+
+         Car() {
+             engine = new Engine();
+         }
+
+         void start() {
+             engine.start();
+             System.out.println("Car starts");
+         }
+     }
+     ```
+
+10. Can you explain the concept of static methods and variables in Java?
+    - Answer: Static methods and variables belong to the class rather than any instance of the class.
+    - Code Example:
+      ```java
+      class Math {
+          static int add(int a, int b) {
+              return a + b;
+          }
+      }
+      ```
+
+11. What is the role of the 'super' keyword in Java?
+    - Answer: The 'super' keyword is used to refer to the immediate parent class object.
+    - Code Example:
+      ```java
+      class Animal {
+          void sound() {
+              System.out.println("Animal makes a sound");
+          }
+      }
+
+      class Dog extends Animal {
+          void sound() {
+              super.sound();
+              System.out.println("Dog barks");
+          }
+      }
+      ```
+
+12. How does Java achieve runtime polymorphism?
+    - Answer: Java achieves runtime polymorphism through method overriding.
+    - Code Example:
+      ```java
+      class Animal {
+          void sound() {
+              System.out.println("Animal makes a sound");
+          }
+      }
+
+      class Dog extends Animal {
+          void sound() {
+              System.out.println("Dog barks");
+          }
+      }
+
+      class Test {
+          public static void main(String[] args) {
+              Animal a = new Dog();
+              a.sound(); // Outputs: Dog barks
+          }
+      }
+      ```
+
+13. What are access modifiers and how do they affect the visibility of a class member?
+    - Answer: Access modifiers (private, default, protected, public) control the visibility of class members.
+    - Code Example:
+      ```java
+      class Person {
+          private String name; // Only accessible within the class
+          public int age; // Accessible from anywhere
+      }
+      ```
+
+14. Can you explain the concept of inner classes in Java?
+    - Answer: Inner classes are classes defined within another class. They can access the members of the outer class.
+    - Code Example:
+      ```java
+      class OuterClass {
+          private String message = "Hello, World!";
+
+          class InnerClass {
+              void printMessage() {
+                  System.out.println(message);
+              }
+          }
+      }
+      ```
+
+15. What is the difference between shallow copy and deep copy in Java?
+    - Answer: A shallow copy copies the object's references, while a deep copy copies the object and the objects it references.
+    - Code Example:
+      ```java
+      class Person implements Cloneable {
+          String name;
+          Address address;
+
+          Person(String name, Address address) {
+              this.name = name;
+              this.address = address;
+          }
+
+          protected Object clone() throws CloneNotSupportedException {
+              return super.clone(); // Shallow copy
+          }
+
+          Person deepCopy() {
+              return new Person(this.name, new Address(this.address.street));
+          }
+      }
+
+      class Address {
+          String street;
+
+          Address(String street) {
+              this.street = street;
+          }
+      }
+      

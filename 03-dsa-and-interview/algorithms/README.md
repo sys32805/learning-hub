@@ -1,27 +1,36 @@
+# Java interview practice
 
-<h2>Please visit my wiki link for full list of questions</h2>
-<h3>https://github.com/mission-peace/interview/wiki</h3>
+Java-only algorithm implementations for interview prep (`src/com/interview/...`).
 
-<h2> Like my facebook page for latest updates on my youtube channel</h2>
-<h3>https://www.facebook.com/tusharroy25</h3>
+Run with JDK 8+ and Gradle (`./gradlew build` or open in IntelliJ).
 
-<h2> Contribution </h2>
-Please contribute to this repository to help it make better. Any change like new question, code improvement, doc improvement etc. is very welcome. Just send me a pull request and I will review the request and approve it if it looks good. 
+## Practice order (recommended)
 
-<h2> How to use this repository </h2>
+| Order | Topic | Package | Count |
+|------:|-------|---------|------:|
+| 1 | Arrays | `src/com/interview/array` | 76 |
+| 2 | Strings | `src/com/interview/string` | 24 |
+| 3 | Linked list | `src/com/interview/linklist` | 34 |
+| 4 | Stack / Queue | `src/com/interview/stackqueue` | 10 |
+| 5 | Binary search | `src/com/interview/binarysearch` | 17 |
+| 6 | Sorting | `src/com/interview/sort` | 9 |
+| 7 | Recursion | `src/com/interview/recursion` | 31 |
+| 8 | Trees | `src/com/interview/tree` | 78 |
+| 9 | Graphs | `src/com/interview/graph` | 47 |
+| 10 | Dynamic programming | `src/com/interview/dynamic` | 61 |
+| 11 | Bits | `src/com/interview/bits` | 22 |
+| 12 | Numbers / math | `src/com/interview/number` | 31 |
+| 13 | Multi-array / matrix | `src/com/interview/multiarray` | 15 |
+| 14 | Multithreading | `src/com/interview/multithreaded` | 11 |
 
-<h3> Softwares to install </h3>
-* Install JDK8 https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html
-* Install Git https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-* Install either Intellij https://www.jetbrains.com/idea/download/
-* If you like eclipse instead of intellij install eclipse https://eclipse.org/downloads/
+Also useful: `misc`, `geometry`, `suffixprefix`, `regex`, `random`.
 
-<h3> Set up your desktop </h3>
-* Pull the git repository. Go to command line and type git clone https://github.com/mission-peace/interview.git
-* Go to root directory of checked out project.
-* Run ./gradlew idea to generate idea related classes
-* Fire up intellij. Go to Open. Go to git repo folder and open interview.ipr . On file menu go to project structure. Update language level support to 8
-* If you use eclipse, do ./gradlew eclipse . This will generate eclipse related files. Go to eclipse and open up folder containing this repo.
-* Go to any program and run that program
-* Go to any test and run the junit test.
-* Run ./gradlew build to create classes, run tests and create jar.
+## How to practice
+
+1. Learn the idea in [`../concepts`](../concepts/) (datastructures, recursion, slidingWindow, Java8).
+2. Open **one** Java class here — read it, then re-implement without looking.
+3. Solve a matching problem in [`../../04-leetcode`](../../04-leetcode/).
+
+## Not included
+
+C++ and Python copies were removed so this track stays Java-focused.

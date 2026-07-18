@@ -1,0 +1,397 @@
+1. What is multithreading in Java?
+   - Answer: Multithreading is a process of executing multiple threads simultaneously to maximize CPU utilization.
+
+2. How do you create a thread in Java?
+   - Answer: You can create a thread by extending the Thread class or implementing the Runnable interface.
+   - Code Example:
+     ```java
+     // Extending Thread class
+     class MyThread extends Thread {
+         public void run() {
+             System.out.println("Thread is running");
+         }
+     }
+
+     // Implementing Runnable interface
+     class MyRunnable implements Runnable {
+         public void run() {
+             System.out.println("Thread is running");
+         }
+     }
+
+     public class TestThread {
+         public static void main(String[] args) {
+             MyThread t1 = new MyThread();
+             t1.start();
+
+             Thread t2 = new Thread(new MyRunnable());
+             t2.start();
+         }
+     }
+     ```
+
+3. What is the difference between extending the Thread class and implementing the Runnable interface?
+   - Answer: Extending the Thread class allows you to override the run method, while implementing the Runnable interface allows you to pass the instance to a Thread object.
+   - Code Example:
+     ```java
+     // Extending Thread class
+     class MyThread extends Thread {
+         public void run() {
+             System.out.println("Thread is running");
+         }
+     }
+
+     // Implementing Runnable interface
+     class MyRunnable implements Runnable {
+         public void run() {
+             System.out.println("Thread is running");
+         }
+     }
+     ```
+
+4. Can you explain the lifecycle of a thread in Java?
+   - Answer: The lifecycle of a thread includes New, Runnable, Running, Blocked/Waiting, and Terminated states.
+   - Code Example:
+     ```java
+     public class ThreadLifecycle extends Thread {
+         public void run() {
+             System.out.println("Thread is running");
+         }
+
+         public static void main(String[] args) {
+             ThreadLifecycle t1 = new ThreadLifecycle();
+             System.out.println("Thread state: " + t1.getState()); // NEW
+             t1.start();
+             System.out.println("Thread state: " + t1.getState()); // RUNNABLE
+         }
+     }
+     ```
+
+5. What is the purpose of the synchronized keyword in Java?
+   - Answer: The synchronized keyword is used to control access to a shared resource by multiple threads to prevent thread interference and consistency problems.
+   - Code Example:
+     ```java
+     class Counter {
+         private int count = 0;
+
+         public synchronized void increment() {
+             count++;
+         }
+
+         public int getCount() {
+             return count;
+         }
+     }
+
+     public class TestSynchronization {
+         public static void main(String[] args) {
+             Counter counter = new Counter();
+             Thread t1 = new Thread(() -> {
+                 for (int i = 0; i < 1000; i++) {
+                     counter.increment();
+                 }
+             });
+
+             Thread t2 = new Thread(() -> {
+                 for (int i = 0; i < 1000; i++) {
+                     counter.increment();
+                 }
+             });
+
+             t1.start();
+             t2.start();
+
+             try {
+                 t1.join();
+                 t2.join();
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+
+             System.out.println("Count: " + counter.getCount());
+         }
+     }
+     ```
+
+6. How do you handle thread synchronization in Java?
+   - Answer: Thread synchronization can be handled using synchronized methods, synchronized blocks, and locks.
+   - Code Example:
+     ```java
+     class Counter {
+         private int count = 0;
+
+         public void increment() {
+             synchronized (this) {
+                 count++;
+             }
+         }
+
+         public int getCount() {
+             return count;
+         }
+     }
+     ```
+
+7. What is a deadlock and how can it be avoided?
+   - Answer: A deadlock is a situation where two or more threads are blocked forever, waiting for each other. It can be avoided by avoiding nested locks, using a timeout, and ordering locks.
+   - Code Example:
+     ```java
+     class A {
+         synchronized void methodA(B b) {
+             System.out.println("Thread 1 starts execution of methodA");
+             try {
+                 Thread.sleep(100);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+             b.last();
+         }
+
+         synchronized void last() {
+             System.out.println("Inside A.last()");
+         }
+     }
+
+     class B {
+         synchronized void methodB(A a) {
+             System.out.println("Thread 2 starts execution of methodB");
+             try {
+                 Thread.sleep(100);
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+             a.last();
+         }
+
+         synchronized void last() {
+             System.out.println("Inside B.last()");
+         }
+     }
+
+     public class DeadlockExample implements Runnable {
+         A a = new A();
+         B b = new B();
+
+         DeadlockExample() {
+             Thread t = new Thread(this);
+             t.start();
+             a.methodA(b); // main thread
+         }
+
+         public void run() {
+             b.methodB(a); // other thread
+         }
+
+         public static void main(String[] args) {
+             new DeadlockExample();
+         }
+     }
+     ```
+
+8. Can you explain the concept of thread safety in Java?
+   - Answer: Thread safety means that a method or class instance can be used by multiple threads concurrently without causing any problems.
+   - Code Example:
+     ```java
+     class Counter {
+         private int count = 0;
+
+         public synchronized void increment() {
+             count++;
+         }
+
+         public synchronized int getCount() {
+             return count;
+         }
+     }
+     ```
+
+9. What are the differences between wait(), notify(), and notifyAll() methods in Java?
+   - Answer: The wait() method causes the current thread to wait until another thread invokes notify() or notifyAll(). The notify() method wakes up a single thread that is waiting on the object's monitor. The notifyAll() method wakes up all threads that are waiting on the object's monitor.
+   - Code Example:
+     ```java
+     class SharedResource {
+         synchronized void waitMethod() {
+             try {
+                 wait();
+             } catch (InterruptedException e) {
+                 e.printStackTrace();
+             }
+         }
+
+         synchronized void notifyMethod() {
+             notify();
+         }
+
+         synchronized void notifyAllMethod() {
+             notifyAll();
+         }
+     }
+     ```
+
+10. How do you create a thread pool in Java?
+    - Answer: You can create a thread pool using the Executors framework.
+    - Code Example:
+      ```java
+      import java.util.concurrent.ExecutorService;
+      import java.util.concurrent.Executors;
+
+      public class ThreadPoolExample {
+          public static void main(String[] args) {
+              ExecutorService executor = Executors.newFixedThreadPool(5);
+              for (int i = 0; i < 10; i++) {
+                  Runnable worker = new WorkerThread("" + i);
+                  executor.execute(worker);
+              }
+              executor.shutdown();
+              while (!executor.isTerminated()) {
+              }
+              System.out.println("Finished all threads");
+          }
+      }
+
+      class WorkerThread implements Runnable {
+          private String command;
+
+          public WorkerThread(String s) {
+              this.command = s;
+          }
+
+          @Override
+          public void run() {
+              System.out.println(Thread.currentThread().getName() + " Start. Command = " + command);
+              processCommand();
+              System.out.println(Thread.currentThread().getName() + " End.");
+          }
+
+          private void processCommand() {
+              try {
+                  Thread.sleep(5000);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+          }
+
+          @Override
+          public String toString() {
+              return this.command;
+          }
+      }
+      ```
+
+11. What is the purpose of the volatile keyword in Java?
+    - Answer: The volatile keyword is used to indicate that a variable's value will be modified by different threads.
+    - Code Example:
+      ```java
+      class VolatileExample extends Thread {
+          private volatile boolean running = true;
+
+          public void run() {
+              while (running) {
+                  System.out.println("Thread is running");
+              }
+          }
+
+          public void stopRunning() {
+              running = false;
+          }
+
+          public static void main(String[] args) {
+              VolatileExample t = new VolatileExample();
+              t.start();
+              try {
+                  Thread.sleep(1000);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+              t.stopRunning();
+              System.out.println("Thread stopped");
+          }
+      }
+      ```
+
+12. Can you explain the concept of the Executor framework in Java?
+    - Answer: The Executor framework provides a way to manage a pool of worker threads and assign tasks to them.
+    - Code Example:
+      ```java
+      import java.util.concurrent.ExecutorService;
+      import java.util.concurrent.Executors;
+
+      public class ExecutorFrameworkExample {
+          public static void main(String[] args) {
+              ExecutorService executor = Executors.newFixedThreadPool(5);
+              for (int i = 0; i < 10; i++) {
+                  Runnable worker = new WorkerThread("" + i);
+                  executor.execute(worker);
+              }
+              executor.shutdown();
+              while (!executor.isTerminated()) {
+              }
+              System.out.println("Finished all threads");
+          }
+      }
+
+      class WorkerThread implements Runnable {
+          private String command;
+
+          public WorkerThread(String s) {
+              this.command = s;
+          }
+
+          @Override
+          public void run() {
+              System.out.println(Thread.currentThread().getName() + " Start. Command = " + command);
+              processCommand();
+              System.out.println(Thread.currentThread().getName() + " End.");
+          }
+
+          private void processCommand() {
+              try {
+                  Thread.sleep(5000);
+              } catch (InterruptedException e) {
+                  e.printStackTrace();
+              }
+          }
+
+          @Override
+          public String toString() {
+              return this.command;
+          }
+      }
+      ```
+
+13. What is the difference between a process and a thread?
+    - Answer: A process is an independent program in execution, while a thread is a smaller unit of a process that can run concurrently with other threads.
+    - Code Example:
+      ```java
+      // No specific code example needed for this conceptual question
+      ```
+
+14. How do you handle exceptions in a multi-threaded environment in Java?
+    - Answer: By using try-catch blocks within the run method of the thread or using an UncaughtExceptionHandler.
+    - Code Example:
+      ```java
+      public class MultiThreadedExceptionHandling {
+          public static void main(String[] args) {
+              Thread thread = new Thread(() -> {
+                  try {
+                      int data = 50 / 0;
+                  } catch (ArithmeticException e) {
+                      System.out.println(e);
+                  }
+              });
+
+              thread.setUncaughtExceptionHandler((t, e) -> {
+                  System.out.println("Uncaught exception: " + e);
+              });
+
+              thread.start();
+          }
+      }
+      ```
+
+15. What are some best practices for multithreading in Java?
+    - Answer: Some best practices include minimizing the use of synchronized blocks, using thread pools, avoiding deadlocks, and handling exceptions properly.
+    - Code Example:
+      ```java
+      // No specific code example needed for this conceptual question
+      ```
