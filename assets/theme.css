@@ -304,26 +304,97 @@ body.study-mode .markdown-section {
   cursor: pointer;
 }
 
-/* —— Docsify overrides —— */
+/* —— Docsify sidebar (force readable; vue.css defaults to white) —— */
+.sidebar,
+.sidebar .sidebar-nav,
+.sidebar > h1.app-name,
+.sidebar .app-name,
+.sidebar .search,
+.sidebar .search .input-wrap {
+  background: #0f1714 !important;
+  background-color: #0f1714 !important;
+  color: #e7eeea !important;
+  border-color: #2a3a34 !important;
+}
+
 .sidebar {
-  background: var(--lh-sidebar) !important;
-  border-right: 1px solid var(--lh-border) !important;
-  color: var(--lh-text) !important;
+  border-right: 1px solid #2a3a34 !important;
   top: var(--lh-chrome-h, 56px) !important;
   padding-top: 12px !important;
 }
 
-.sidebar ul li a {
-  color: var(--lh-muted) !important;
+.sidebar .app-name-link,
+.sidebar .app-name a,
+.sidebar h1,
+.sidebar h1 a {
+  color: #2dd4bf !important;
+}
+
+.sidebar ul,
+.sidebar li,
+.sidebar p,
+.sidebar span {
+  color: #c5d4cc !important;
+  background: transparent !important;
+}
+
+.sidebar ul li a,
+.sidebar-nav a,
+.sidebar-nav li > p {
+  color: #c5d4cc !important;
+  font-weight: 500 !important;
 }
 
 .sidebar ul li.active > a,
-.sidebar ul li a:hover {
-  color: var(--lh-accent) !important;
+.sidebar ul li a:hover,
+.sidebar-nav a:hover {
+  color: #2dd4bf !important;
+  background: rgba(45, 212, 191, 0.1) !important;
+}
+
+.sidebar .search input,
+.sidebar input[type="search"],
+.sidebar input {
+  background: #1a2420 !important;
+  color: #e7eeea !important;
+  border: 1px solid #2a3a34 !important;
+}
+
+.sidebar .search input::placeholder {
+  color: #8fa399 !important;
 }
 
 .sidebar-toggle span {
-  background-color: var(--lh-accent) !important;
+  background-color: #2dd4bf !important;
+}
+
+/* Light theme sidebar still readable (not pure white wash) */
+[data-theme="light"] .sidebar,
+[data-theme="light"] .sidebar .sidebar-nav,
+[data-theme="light"] .sidebar .search,
+[data-theme="light"] .sidebar .search .input-wrap {
+  background: #e8efeb !important;
+  background-color: #e8efeb !important;
+  color: #14201c !important;
+}
+
+[data-theme="light"] .sidebar ul li a,
+[data-theme="light"] .sidebar-nav a,
+[data-theme="light"] .sidebar-nav li > p,
+[data-theme="light"] .sidebar li,
+[data-theme="light"] .sidebar p {
+  color: #1f2e28 !important;
+}
+
+[data-theme="light"] .sidebar .app-name-link,
+[data-theme="light"] .sidebar h1 a {
+  color: #0f766e !important;
+}
+
+[data-theme="light"] .sidebar .search input {
+  background: #ffffff !important;
+  color: #14201c !important;
+  border: 1px solid #d5e0da !important;
 }
 
 body,
