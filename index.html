@@ -110,8 +110,28 @@
     /* Hide GitHub corner notch that breaks the header edge */
     .github-corner { display: none !important; }
 
-    /* Do NOT move .sidebar-toggle — that caused the green overlay on menu text */
     /* Readable left menu (vue default is too light) */
+    .sidebar .search {
+      margin: 0 12px 12px !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+    .sidebar .search input {
+      display: block !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 8px 10px !important;
+      border: 1px solid #c5d4cc !important;
+      border-radius: 6px !important;
+      background: #fff !important;
+      color: #2c3e50 !important;
+      opacity: 1 !important;
+      font-size: 14px !important;
+    }
+    .sidebar .search input::placeholder {
+      color: #7a8a82 !important;
+      opacity: 1 !important;
+    }
     .sidebar .app-name a,
     .sidebar h1 a {
       color: #0f766e !important;
@@ -219,7 +239,12 @@
           routerMode: 'hash',
           notFoundPage: false,
           ext: '.md',
-          search: 'auto',
+          search: {
+            paths: 'auto',
+            placeholder: 'Search notes…',
+            noData: 'No results',
+            depth: 4
+          },
           copyCode: { buttonText: 'Copy', successText: 'Copied' },
           pagination: { previousText: 'Previous', nextText: 'Next', crossChapter: true }
         };
@@ -234,10 +259,11 @@
           });
         }
 
-        load('https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js')
-          .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js'); })
+        // Plugins must register on $docsify.plugins BEFORE docsify.min.js inits
+        load('https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js')
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
+          .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
           .then(function () {
             function fixSidebarText() {
