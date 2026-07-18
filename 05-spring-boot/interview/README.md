@@ -14,7 +14,8 @@
 | 4 | [REST & Web](05-spring-boot/interview/rest-web.md) | Request flow, DTO, status codes, advice, filters |
 | 5 | [JPA / Hibernate](05-spring-boot/interview/jpa-hibernate.md) | Mapping, TX, N+1, OSIV, migrations |
 | 6 | [Security](05-spring-boot/interview/security.md) | Authn/Authz, filter chain, JWT, method security |
-| 7 | [Tricks](05-spring-boot/interview/tricks.md) + [Q&A bank](05-spring-boot/interview/interview-qa.md) | Drill speaking answers |
+| 7 | [WHY answers](05-spring-boot/interview/why-answers.md) | Defend every choice (what interviewers dig into) |
+| 8 | [Tricks](05-spring-boot/interview/tricks.md) + [Q&A bank](05-spring-boot/interview/interview-qa.md) | Drill speaking answers |
 
 Checklist: [daily-revision](05-spring-boot/interview/daily-revision.md)
 
@@ -24,5 +25,6 @@ Checklist: [daily-revision](05-spring-boot/interview/daily-revision.md)
 2. Type / sketch one code sample from memory  
 3. Answer the **trick questions** out loud  
 4. Only then open the answer  
+5. Practice the [WHY bank](05-spring-boot/interview/why-answers.md) — interviewers dig here  
 
 Projects: [Spring-Boot-Advanced-Projects](https://github.com/sys32805/learning-hub/tree/main/05-spring-boot/02-projects/Spring-Boot-Advanced-Projects)

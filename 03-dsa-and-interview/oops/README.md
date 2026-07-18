@@ -22,6 +22,7 @@ Revise **one topic per day**, then say answers out loud.
 | 13 | Inner classes & enums | [inner-classes-enums.md](03-dsa-and-interview/oops/inner-classes-enums.md) |
 | 14 | Design patterns (must-know) | [design-patterns.md](03-dsa-and-interview/oops/design-patterns.md) |
 | 15 | Generics | [generics-interview.md](03-dsa-and-interview/oops/generics-interview.md) |
+| — | **WHY answers (interviewer depth)** | [why-answers.md](03-dsa-and-interview/oops/why-answers.md) |
 | — | Exceptions (tricks) | [exceptions-tricks.md](03-dsa-and-interview/oops/exceptions-tricks.md) |
 | — | Exceptions (full Q&A) | [02-exception-handling.md](03-dsa-and-interview/oops/02-exception-handling.md) |
 | — | Multithreading (tricks) | [multithreading-tricks.md](03-dsa-and-interview/oops/multithreading-tricks.md) |
@@ -33,7 +34,7 @@ Revise **one topic per day**, then say answers out loud.
 ## How to use (10–20 min/day)
 
 1. Open **one** topic page  
-2. Read explanation + code  
+2. For every concept, also answer **Why?** (see [WHY answers](03-dsa-and-interview/oops/why-answers.md))  
 3. Answer **trick questions** without looking  
 4. Check answers  
 

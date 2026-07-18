@@ -1,6 +1,7 @@
 * [Home](README.md)
 
 * [Spring Interview Home](05-spring-boot/interview/README.md)
+* [Spring WHY answers](05-spring-boot/interview/why-answers.md)
 * [Spring Annotations](05-spring-boot/interview/annotations.md)
 * [Spring Core Basics](05-spring-boot/interview/core-basics.md)
 * [Spring IoC / DI](05-spring-boot/interview/ioc-di.md)
@@ -13,6 +14,7 @@
 * [Spring projects home](05-spring-boot/README.md)
 
 * [OOPs home](03-dsa-and-interview/oops/README.md)
+* [OOPs WHY answers](03-dsa-and-interview/oops/why-answers.md)
 * [OOPs daily revision](03-dsa-and-interview/oops/daily-revision.md)
 * [OOPs pillars](03-dsa-and-interview/oops/pillars.md)
 * [OOPs advanced](03-dsa-and-interview/oops/04-advanced-oops-interview.md)

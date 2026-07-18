@@ -1,5 +1,6 @@
 * [Home](#/)
+* [Spring WHY](#/05-spring-boot/interview/why-answers)
 * [Spring Interview](#/05-spring-boot/interview/README)
 * [Annotations](#/05-spring-boot/interview/annotations)
-* [Spring Q&A](#/05-spring-boot/interview/interview-qa)
+* [OOPs WHY](#/03-dsa-and-interview/oops/why-answers)
 * [OOPs](#/03-dsa-and-interview/oops/README)
