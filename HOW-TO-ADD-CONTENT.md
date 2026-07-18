@@ -26,11 +26,18 @@ node -e "console.log(require('crypto').createHash('sha256').update('YOUR_NEW_PAS
 
 **Note:** This locks the **website UI**. On a public repo, raw `.md` files on GitHub can still be opened directly. Fine for focused personal study; use a private repo if you need stronger privacy.
 
-## Theme
+## Theme & Study mode
 
-- Default: **dark teal** (night study).
-- Use **Light mode / Dark mode** on the login screen or in the top bar after login.
-- Preference is saved in the browser (`localStorage`).
+After login, the **toolbar** (always visible under the quick links) has:
+
+| Button | What it does |
+|--------|----------------|
+| **Study mode** | Hides sidebar + quick links for focused reading. Click **Exit study** to restore. |
+| **Light mode / Dark mode** | Theme toggle (also on the login card). |
+| **Logout** | Clears session and returns to the login screen. |
+
+- Default theme: **dark teal**. Preferences save in `localStorage`.
+- Study mode preference also saves until you turn it off.
 
 ## Daily workflow
 

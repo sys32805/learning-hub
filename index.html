@@ -31,20 +31,23 @@
 
   <!-- App (shown after login) -->
   <div id="app-shell">
-    <nav id="quick-nav">
-      <strong>Quick:</strong>
-      <a href="/learning-hub/#/">Home</a>
-      <a href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
-      <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
-      <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
-      <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
-      <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
-      <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
-      <div class="nav-actions">
-        <button type="button" class="nav-btn" id="theme-toggle-app">Theme</button>
+    <div id="top-chrome">
+      <nav id="quick-nav">
+        <strong>Quick:</strong>
+        <a href="/learning-hub/#/">Home</a>
+        <a href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
+        <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
+        <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
+        <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
+        <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
+        <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
+      </nav>
+      <div id="app-toolbar">
+        <button type="button" class="nav-btn" id="study-toggle-btn" title="Hide sidebar and quick links">Study mode</button>
+        <button type="button" class="nav-btn" id="theme-toggle-app">Light mode</button>
         <button type="button" class="nav-btn" id="logout-btn">Logout</button>
       </div>
-    </nav>
+    </div>
     <div id="app">Loading…</div>
   </div>
 
@@ -52,6 +55,7 @@
   <script>
     (function () {
       var THEME_KEY = 'learning-hub-theme';
+      var STUDY_KEY = 'learning-hub-study';
       var auth = window.LEARNING_HUB_AUTH || {};
       var sessionKey = auth.sessionKey || 'learning-hub-auth';
       var docsifyStarted = false;
@@ -63,15 +67,36 @@
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
+        var label = theme === 'dark' ? 'Light mode' : 'Dark mode';
         var loginBtn = document.getElementById('theme-toggle-login');
         var appBtn = document.getElementById('theme-toggle-app');
-        var label = theme === 'dark' ? 'Light mode' : 'Dark mode';
         if (loginBtn) loginBtn.textContent = label;
         if (appBtn) appBtn.textContent = label;
       }
 
       function toggleTheme() {
         applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+      }
+
+      function isStudyMode() {
+        try { return localStorage.getItem(STUDY_KEY) === '1'; } catch (e) { return false; }
+      }
+
+      function applyStudyMode(on) {
+        document.body.classList.toggle('study-mode', on);
+        try {
+          if (on) localStorage.setItem(STUDY_KEY, '1');
+          else localStorage.removeItem(STUDY_KEY);
+        } catch (e) { /* ignore */ }
+        var btn = document.getElementById('study-toggle-btn');
+        if (btn) {
+          btn.textContent = on ? 'Exit study' : 'Study mode';
+          btn.classList.toggle('is-on', on);
+        }
+      }
+
+      function toggleStudyMode() {
+        applyStudyMode(!document.body.classList.contains('study-mode'));
       }
 
       async function sha256Hex(text) {
@@ -83,11 +108,8 @@
       }
 
       function isLoggedIn() {
-        try {
-          return sessionStorage.getItem(sessionKey) === '1';
-        } catch (e) {
-          return false;
-        }
+        try { return sessionStorage.getItem(sessionKey) === '1'; }
+        catch (e) { return false; }
       }
 
       function setLoggedIn(on) {
@@ -112,6 +134,7 @@
       function showApp() {
         document.getElementById('login-screen').classList.add('is-hidden');
         document.getElementById('app-shell').classList.add('is-open');
+        applyStudyMode(isStudyMode());
         startDocsifyOnce();
       }
 
@@ -205,6 +228,7 @@
 
       document.getElementById('theme-toggle-login').addEventListener('click', toggleTheme);
       document.getElementById('theme-toggle-app').addEventListener('click', toggleTheme);
+      document.getElementById('study-toggle-btn').addEventListener('click', toggleStudyMode);
 
       document.getElementById('quick-nav').addEventListener('click', function (e) {
         var a = e.target.closest('a');

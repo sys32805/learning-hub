@@ -157,13 +157,17 @@ html, body {
 #app-shell.is-open { display: block; }
 #login-screen.is-hidden { display: none; }
 
-#quick-nav {
+#top-chrome {
   position: sticky;
   top: 0;
   z-index: 1000;
   background: var(--lh-accent-deep);
   color: #fff;
-  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#quick-nav {
+  padding: 8px 16px 4px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 12px;
@@ -183,26 +187,62 @@ html, body {
 
 #quick-nav a:hover { text-decoration: underline; opacity: 1; }
 
-#quick-nav .nav-actions {
-  margin-left: auto;
+/* Always-visible toolbar — Logout / Theme / Study never wrap away */
+#app-toolbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
+  justify-content: flex-end;
+  padding: 8px 16px 10px;
+  background: rgba(0, 0, 0, 0.18);
 }
 
-#quick-nav .nav-btn {
+#app-toolbar .nav-btn {
   background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   color: #fff;
   border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
 }
 
-#quick-nav .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
+#app-toolbar .nav-btn:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+#app-toolbar .nav-btn.is-on {
+  background: #fff;
+  color: var(--lh-accent-deep);
+  border-color: #fff;
+}
+
+#app-toolbar #logout-btn {
+  background: rgba(248, 113, 113, 0.25);
+  border-color: rgba(254, 202, 202, 0.55);
+}
+
+#app-toolbar #logout-btn:hover {
+  background: rgba(248, 113, 113, 0.4);
+}
+
+/* Study mode: hide chrome, keep toolbar + content */
+body.study-mode #quick-nav { display: none !important; }
+body.study-mode .sidebar,
+body.study-mode .sidebar-toggle,
+body.study-mode .app-nav {
+  display: none !important;
+}
+body.study-mode main,
+body.study-mode .content {
+  left: 0 !important;
+  width: 100% !important;
+}
+body.study-mode .markdown-section {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .theme-toggle-btn {
