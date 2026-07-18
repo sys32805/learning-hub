@@ -32,20 +32,22 @@
   <!-- App (shown after login) -->
   <div id="app-shell">
     <div id="top-chrome">
-      <nav id="quick-nav">
-        <strong>Quick:</strong>
-        <a href="/learning-hub/#/">Home</a>
-        <a href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
-        <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
-        <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
-        <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
-        <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
-        <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
-      </nav>
-      <div id="app-toolbar">
-        <button type="button" class="nav-btn" id="study-toggle-btn" title="Hide sidebar and quick links">Study mode</button>
-        <button type="button" class="nav-btn" id="theme-toggle-app">Light mode</button>
-        <button type="button" class="nav-btn" id="logout-btn">Logout</button>
+      <div id="top-chrome-inner">
+        <nav id="quick-nav">
+          <strong>Quick:</strong>
+          <a href="/learning-hub/#/">Home</a>
+          <a href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
+          <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
+          <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
+          <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
+          <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
+          <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
+        </nav>
+        <div id="app-toolbar">
+          <button type="button" class="nav-btn" id="study-toggle-btn" title="Hide sidebar and quick links">Study mode</button>
+          <button type="button" class="nav-btn" id="theme-toggle-app">Light mode</button>
+          <button type="button" class="nav-btn" id="logout-btn">Logout</button>
+        </div>
       </div>
     </div>
     <div id="app">Loading…</div>
@@ -82,6 +84,13 @@
         try { return localStorage.getItem(STUDY_KEY) === '1'; } catch (e) { return false; }
       }
 
+      function syncChromeHeight() {
+        var chrome = document.getElementById('top-chrome');
+        if (!chrome) return;
+        var h = Math.ceil(chrome.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--lh-chrome-h', h + 'px');
+      }
+
       function applyStudyMode(on) {
         document.body.classList.toggle('study-mode', on);
         try {
@@ -93,6 +102,7 @@
           btn.textContent = on ? 'Exit study' : 'Study mode';
           btn.classList.toggle('is-on', on);
         }
+        syncChromeHeight();
       }
 
       function toggleStudyMode() {
@@ -135,7 +145,9 @@
         document.getElementById('login-screen').classList.add('is-hidden');
         document.getElementById('app-shell').classList.add('is-open');
         applyStudyMode(isStudyMode());
+        syncChromeHeight();
         startDocsifyOnce();
+        requestAnimationFrame(syncChromeHeight);
       }
 
       function showLogin() {
@@ -153,11 +165,10 @@
           basePath: '/learning-hub/',
           homepage: 'README.md',
           loadSidebar: true,
-          loadNavbar: true,
+          loadNavbar: false,
           subMaxLevel: 3,
           alias: {
-            '/.*/_sidebar.md': '/learning-hub/_sidebar.md',
-            '/.*/_navbar.md': '/learning-hub/_navbar.md'
+            '/.*/_sidebar.md': '/learning-hub/_sidebar.md'
           },
           requestHeaders: { 'cache-control': 'no-cache' },
           auto2top: true,
@@ -249,6 +260,7 @@
       });
 
       applyTheme(getTheme());
+      window.addEventListener('resize', syncChromeHeight);
       if (isLoggedIn()) showApp();
       else showLogin();
     })();

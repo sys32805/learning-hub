@@ -157,22 +157,37 @@ html, body {
 #app-shell.is-open { display: block; }
 #login-screen.is-hidden { display: none; }
 
+/* Fixed header so Docsify absolute sidebar/nav cannot clip it */
 #top-chrome {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  right: 0;
+  z-index: 10000;
   background: var(--lh-accent-deep);
   color: #fff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* One clean row: links left, controls right */
+#top-chrome-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  padding: 10px 16px;
+  min-height: 52px;
 }
 
 #quick-nav {
-  padding: 8px 16px 4px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 12px;
   align-items: center;
   font-size: 13px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 #quick-nav strong { margin-right: 2px; opacity: 0.9; }
@@ -183,19 +198,18 @@ html, body {
   font-weight: 600;
   opacity: 0.92;
   padding: 2px 0;
+  white-space: nowrap;
 }
 
 #quick-nav a:hover { text-decoration: underline; opacity: 1; }
 
-/* Always-visible toolbar — Logout / Theme / Study never wrap away */
 #app-toolbar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   align-items: center;
-  justify-content: flex-end;
-  padding: 8px 16px 10px;
-  background: rgba(0, 0, 0, 0.18);
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 #app-toolbar .nav-btn {
@@ -207,6 +221,7 @@ html, body {
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 #app-toolbar .nav-btn:hover {
@@ -228,11 +243,30 @@ html, body {
   background: rgba(248, 113, 113, 0.4);
 }
 
-/* Study mode: hide chrome, keep toolbar + content */
+/* Space for fixed header — set by JS as --lh-chrome-h */
+#app {
+  padding-top: var(--lh-chrome-h, 56px);
+}
+
+/* Kill Docsify top navbar (duplicates our quick links and was clipping) */
+.app-nav {
+  display: none !important;
+}
+
+/* Docsify sidebar must start below our header */
+.sidebar {
+  top: var(--lh-chrome-h, 56px) !important;
+  padding-top: 12px !important;
+}
+
+.sidebar-toggle {
+  top: calc(var(--lh-chrome-h, 56px) + 12px) !important;
+}
+
+/* Study mode: hide chrome links + sidebar, keep toolbar strip */
 body.study-mode #quick-nav { display: none !important; }
 body.study-mode .sidebar,
-body.study-mode .sidebar-toggle,
-body.study-mode .app-nav {
+body.study-mode .sidebar-toggle {
   display: none !important;
 }
 body.study-mode main,
@@ -261,6 +295,8 @@ body.study-mode .markdown-section {
   background: var(--lh-sidebar) !important;
   border-right: 1px solid var(--lh-border) !important;
   color: var(--lh-text) !important;
+  top: var(--lh-chrome-h, 56px) !important;
+  padding-top: 12px !important;
 }
 
 .sidebar ul li a {
