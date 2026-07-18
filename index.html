@@ -1,20 +1,113 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <!-- Dark Docsify base (not vue white sidebar) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" />
-  <link rel="stylesheet" href="/learning-hub/assets/theme.css?v=20260719fix" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+  <style>
+    /* Login + header only — no Docsify theme overrides */
+    body { margin: 0; }
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #f5f7f6;
+      font-family: system-ui, sans-serif;
+    }
+    #login-screen.is-hidden { display: none; }
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      border: 1px solid #dde5e1;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+    .login-brand { margin: 0 0 6px; color: #0f766e; font-size: 1.5rem; }
+    .login-sub { margin: 0 0 18px; color: #5c6f66; }
+    .login-card label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #5c6f66;
+      margin-bottom: 6px;
+    }
+    .login-card input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px 12px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #c5d4cc;
+      font-size: 1rem;
+    }
+    .login-card button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      border: 0;
+      border-radius: 8px;
+      background: #0f766e;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .login-error { display: none; color: #b91c1c; margin: 0 0 10px; }
+    .login-error.show { display: block; }
+    .login-hint { margin: 14px 0 0; font-size: 0.8rem; color: #5c6f66; }
+
+    #app-shell { display: none; }
+    #app-shell.is-open { display: block; }
+
+    #top-chrome {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #0f766e;
+      color: #fff;
+      padding: 10px 14px;
+      font-family: system-ui, sans-serif;
+    }
+    #top-chrome-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: center;
+      font-size: 13px;
+    }
+    #quick-nav a {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    #quick-nav a:hover { text-decoration: underline; }
+    #logout-btn {
+      border: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .markdown-section { max-width: 920px; line-height: 1.65; }
+    .markdown-section table { display: table; width: 100%; }
+  </style>
 </head>
 <body>
   <div id="login-screen">
     <div class="login-card">
-      <div class="login-theme-row">
-        <button type="button" class="theme-toggle-btn" id="theme-toggle-login">Light mode</button>
-      </div>
       <h1 class="login-brand">Learning Hub</h1>
       <p class="login-sub">Sign in for OOPs, Spring Boot, and DSA revision.</p>
       <p id="login-error" class="login-error" role="alert"></p>
@@ -23,7 +116,7 @@
         <input id="username" name="username" type="text" required autocomplete="username" />
         <label for="password">Password</label>
         <input id="password" name="password" type="password" required autocomplete="current-password" />
-        <button type="submit">Enter study mode</button>
+        <button type="submit">Enter</button>
       </form>
       <p class="login-hint">Default: <code>learner</code> / <code>Learn@2026</code></p>
     </div>
@@ -42,82 +135,18 @@
           <a data-path="/03-dsa-and-interview/oops/README" href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
           <a data-path="/03-dsa-and-interview/INTERVIEW-PREP" href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
         </nav>
-        <div id="app-toolbar">
-          <button type="button" class="nav-btn" id="study-toggle-btn">Study mode</button>
-          <button type="button" class="nav-btn" id="theme-toggle-app">Light mode</button>
-          <button type="button" class="nav-btn" id="logout-btn">Logout</button>
-        </div>
+        <button type="button" id="logout-btn">Logout</button>
       </div>
     </div>
     <div id="app">Loading…</div>
   </div>
 
-  <script src="/learning-hub/assets/auth-config.js?v=20260719fix"></script>
+  <script src="/learning-hub/assets/auth-config.js"></script>
   <script>
     (function () {
-      var THEME_KEY = 'learning-hub-theme';
-      var STUDY_KEY = 'learning-hub-study';
       var auth = window.LEARNING_HUB_AUTH || {};
       var sessionKey = auth.sessionKey || 'learning-hub-auth';
       var docsifyStarted = false;
-
-      function syncChromeHeight() {
-        var chrome = document.getElementById('top-chrome');
-        if (!chrome) return;
-        document.documentElement.style.setProperty(
-          '--lh-chrome-h',
-          Math.ceil(chrome.getBoundingClientRect().height) + 'px'
-        );
-      }
-
-      function paintSidebar() {
-        var dark = document.documentElement.getAttribute('data-theme') !== 'light';
-        var bg = dark ? '#102019' : '#e8efeb';
-        var fg = dark ? '#edf5f1' : '#0a1210';
-        var side = document.querySelector('.sidebar');
-        if (!side) return;
-        side.style.setProperty('background', bg, 'important');
-        side.style.setProperty('background-color', bg, 'important');
-        side.style.setProperty('color', fg, 'important');
-        side.querySelectorAll('a, li, p, span, .sidebar-nav').forEach(function (el) {
-          el.style.setProperty('color', fg, 'important');
-          el.style.setProperty('opacity', '1', 'important');
-        });
-        var name = side.querySelector('.app-name a, h1 a');
-        if (name) name.style.setProperty('color', dark ? '#2dd4bf' : '#0b5f58', 'important');
-      }
-
-      function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem(THEME_KEY, theme);
-        var label = theme === 'dark' ? 'Light mode' : 'Dark mode';
-        var a = document.getElementById('theme-toggle-login');
-        var b = document.getElementById('theme-toggle-app');
-        if (a) a.textContent = label;
-        if (b) b.textContent = label;
-        paintSidebar();
-        syncChromeHeight();
-      }
-
-      function applyStudyMode(on) {
-        document.body.classList.toggle('study-mode', !!on);
-        try {
-          if (on) localStorage.setItem(STUDY_KEY, '1');
-          else localStorage.removeItem(STUDY_KEY);
-        } catch (e) {}
-        var btn = document.getElementById('study-toggle-btn');
-        if (btn) {
-          btn.textContent = on ? 'Exit study' : 'Study mode';
-        }
-        syncChromeHeight();
-      }
-
-      async function sha256Hex(text) {
-        var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
-        return Array.from(new Uint8Array(buf)).map(function (x) {
-          return x.toString(16).padStart(2, '0');
-        }).join('');
-      }
 
       function isLoggedIn() {
         try { return sessionStorage.getItem(sessionKey) === '1'; } catch (e) { return false; }
@@ -129,15 +158,17 @@
         } catch (e) {}
       }
 
+      async function sha256Hex(text) {
+        var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(function (x) {
+          return x.toString(16).padStart(2, '0');
+        }).join('');
+      }
+
       function showApp() {
         document.getElementById('login-screen').classList.add('is-hidden');
         document.getElementById('app-shell').classList.add('is-open');
-        applyStudyMode(localStorage.getItem(STUDY_KEY) === '1');
-        syncChromeHeight();
         startDocsify();
-        setTimeout(function () { syncChromeHeight(); paintSidebar(); }, 50);
-        setTimeout(paintSidebar, 400);
-        setTimeout(paintSidebar, 1200);
       }
 
       function startDocsify() {
@@ -177,16 +208,6 @@
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
           .then(function () { return load('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
-          .then(function () {
-            document.querySelectorAll('.app-nav').forEach(function (n) { n.remove(); });
-            paintSidebar();
-            syncChromeHeight();
-            // Keep sidebar readable after Docsify re-renders
-            new MutationObserver(function () { paintSidebar(); }).observe(document.getElementById('app'), {
-              childList: true,
-              subtree: true
-            });
-          })
           .catch(function () {
             document.getElementById('app').textContent = 'Failed to load. Refresh the page.';
           });
@@ -211,15 +232,6 @@
         setLoggedIn(false);
         location.href = '/learning-hub/';
       };
-      document.getElementById('theme-toggle-login').onclick = function () {
-        applyTheme((localStorage.getItem(THEME_KEY) || 'dark') === 'dark' ? 'light' : 'dark');
-      };
-      document.getElementById('theme-toggle-app').onclick = function () {
-        applyTheme((localStorage.getItem(THEME_KEY) || 'dark') === 'dark' ? 'light' : 'dark');
-      };
-      document.getElementById('study-toggle-btn').onclick = function () {
-        applyStudyMode(!document.body.classList.contains('study-mode'));
-      };
 
       document.getElementById('quick-nav').onclick = function (e) {
         var a = e.target.closest('a[data-path]');
@@ -230,8 +242,6 @@
         location.hash = '#' + path;
       };
 
-      applyTheme(localStorage.getItem(THEME_KEY) || 'dark');
-      window.addEventListener('resize', syncChromeHeight);
       if (isLoggedIn()) showApp();
     })();
   </script>
