@@ -15,11 +15,10 @@
     @media screen and (max-width: 768px) {
       .sidebar-toggle { display: block !important; }
     }
-    /* Always-visible quick links (does not depend on sidebar load) */
     #quick-nav {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       background: #0f766e;
       color: #fff;
       padding: 10px 16px;
@@ -32,26 +31,30 @@
     }
     #quick-nav strong { margin-right: 4px; }
     #quick-nav a {
-      color: #fff;
+      color: #fff !important;
       text-decoration: underline;
       font-weight: 600;
+      cursor: pointer;
     }
     #quick-nav a:hover { opacity: 0.85; }
     body { margin: 0; }
+    /* Docsify top nav sits under our bar */
+    .app-nav { margin-top: 4px; }
   </style>
 </head>
 <body>
+  <!-- Full paths required for GitHub project pages (/learning-hub/) -->
   <nav id="quick-nav">
     <strong>Quick:</strong>
-    <a href="#/">Home</a>
-    <a href="#/05-spring-boot/interview/README">Spring Interview</a>
-    <a href="#/05-spring-boot/interview/why-answers">Spring WHY</a>
-    <a href="#/05-spring-boot/interview/annotations">Annotations</a>
-    <a href="#/05-spring-boot/interview/core-basics">Core</a>
-    <a href="#/05-spring-boot/interview/interview-qa">Spring Q&amp;A</a>
-    <a href="#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
-    <a href="#/03-dsa-and-interview/oops/README">OOPs</a>
-    <a href="#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
+    <a href="/learning-hub/#/">Home</a>
+    <a href="/learning-hub/#/05-spring-boot/interview/README">Spring Interview</a>
+    <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
+    <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
+    <a href="/learning-hub/#/05-spring-boot/interview/core-basics">Core</a>
+    <a href="/learning-hub/#/05-spring-boot/interview/interview-qa">Spring Q&amp;A</a>
+    <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
+    <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
+    <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
   </nav>
   <div id="app">Loading…</div>
   <script>
@@ -74,6 +77,7 @@
       relativePath: false,
       routerMode: 'hash',
       notFoundPage: false,
+      ext: '.md',
       search: {
         placeholder: 'Search notes…',
         noData: 'No results',
@@ -86,6 +90,26 @@
         crossChapter: true
       }
     }
+
+    // Force Docsify to navigate when quick-nav is clicked
+    document.getElementById('quick-nav').addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      var marker = '/learning-hub/#';
+      var i = href.indexOf(marker);
+      if (i === -1) return;
+      e.preventDefault();
+      var hashPath = href.substring(i + marker.length); // e.g. /05-spring-boot/...
+      if (!hashPath.startsWith('/')) hashPath = '/' + hashPath;
+      if (window.location.hash === '#' + hashPath) {
+        // same page — force reload route
+        window.location.hash = '#/';
+        setTimeout(function () { window.location.hash = '#' + hashPath; }, 0);
+      } else {
+        window.location.hash = '#' + hashPath;
+      }
+    });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
