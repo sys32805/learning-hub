@@ -5,46 +5,45 @@
   <title>Learning Hub</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-  <link rel="stylesheet" href="/learning-hub/assets/theme.css?v=20260719c" />
+  <!-- Dark Docsify base (not vue white sidebar) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css" />
+  <link rel="stylesheet" href="/learning-hub/assets/theme.css?v=20260719fix" />
 </head>
 <body>
-  <!-- Login -->
   <div id="login-screen">
     <div class="login-card">
       <div class="login-theme-row">
         <button type="button" class="theme-toggle-btn" id="theme-toggle-login">Light mode</button>
       </div>
       <h1 class="login-brand">Learning Hub</h1>
-      <p class="login-sub">Sign in to focus on OOPs, Spring Boot, and DSA revision.</p>
+      <p class="login-sub">Sign in for OOPs, Spring Boot, and DSA revision.</p>
       <p id="login-error" class="login-error" role="alert"></p>
-      <form id="login-form" autocomplete="on">
+      <form id="login-form">
         <label for="username">Username</label>
         <input id="username" name="username" type="text" required autocomplete="username" />
         <label for="password">Password</label>
         <input id="password" name="password" type="password" required autocomplete="current-password" />
         <button type="submit">Enter study mode</button>
       </form>
-      <p class="login-hint">Default: <code>learner</code> / <code>Learn@2026</code> — change in <code>assets/auth-config.js</code> after first login.</p>
+      <p class="login-hint">Default: <code>learner</code> / <code>Learn@2026</code></p>
     </div>
   </div>
 
-  <!-- App (shown after login) -->
   <div id="app-shell">
     <div id="top-chrome">
       <div id="top-chrome-inner">
         <nav id="quick-nav">
           <strong>Quick:</strong>
-          <a href="/learning-hub/#/">Home</a>
-          <a href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
-          <a href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
-          <a href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
-          <a href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
-          <a href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
-          <a href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
+          <a data-path="/" href="/learning-hub/#/">Home</a>
+          <a data-path="/05-spring-boot/interview/README" href="/learning-hub/#/05-spring-boot/interview/README">Spring</a>
+          <a data-path="/05-spring-boot/interview/why-answers" href="/learning-hub/#/05-spring-boot/interview/why-answers">Spring WHY</a>
+          <a data-path="/05-spring-boot/interview/annotations" href="/learning-hub/#/05-spring-boot/interview/annotations">Annotations</a>
+          <a data-path="/03-dsa-and-interview/oops/why-answers" href="/learning-hub/#/03-dsa-and-interview/oops/why-answers">OOPs WHY</a>
+          <a data-path="/03-dsa-and-interview/oops/README" href="/learning-hub/#/03-dsa-and-interview/oops/README">OOPs</a>
+          <a data-path="/03-dsa-and-interview/INTERVIEW-PREP" href="/learning-hub/#/03-dsa-and-interview/INTERVIEW-PREP">Roadmap</a>
         </nav>
         <div id="app-toolbar">
-          <button type="button" class="nav-btn" id="study-toggle-btn" title="Hide sidebar and quick links">Study mode</button>
+          <button type="button" class="nav-btn" id="study-toggle-btn">Study mode</button>
           <button type="button" class="nav-btn" id="theme-toggle-app">Light mode</button>
           <button type="button" class="nav-btn" id="logout-btn">Logout</button>
         </div>
@@ -53,7 +52,7 @@
     <div id="app">Loading…</div>
   </div>
 
-  <script src="/learning-hub/assets/auth-config.js?v=20260719a"></script>
+  <script src="/learning-hub/assets/auth-config.js?v=20260719fix"></script>
   <script>
     (function () {
       var THEME_KEY = 'learning-hub-theme';
@@ -62,103 +61,88 @@
       var sessionKey = auth.sessionKey || 'learning-hub-auth';
       var docsifyStarted = false;
 
-      function getTheme() {
-        return localStorage.getItem(THEME_KEY) || 'dark';
+      function syncChromeHeight() {
+        var chrome = document.getElementById('top-chrome');
+        if (!chrome) return;
+        document.documentElement.style.setProperty(
+          '--lh-chrome-h',
+          Math.ceil(chrome.getBoundingClientRect().height) + 'px'
+        );
+      }
+
+      function paintSidebar() {
+        var dark = document.documentElement.getAttribute('data-theme') !== 'light';
+        var bg = dark ? '#102019' : '#e8efeb';
+        var fg = dark ? '#edf5f1' : '#0a1210';
+        var side = document.querySelector('.sidebar');
+        if (!side) return;
+        side.style.setProperty('background', bg, 'important');
+        side.style.setProperty('background-color', bg, 'important');
+        side.style.setProperty('color', fg, 'important');
+        side.querySelectorAll('a, li, p, span, .sidebar-nav').forEach(function (el) {
+          el.style.setProperty('color', fg, 'important');
+          el.style.setProperty('opacity', '1', 'important');
+        });
+        var name = side.querySelector('.app-name a, h1 a');
+        if (name) name.style.setProperty('color', dark ? '#2dd4bf' : '#0b5f58', 'important');
       }
 
       function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem(THEME_KEY, theme);
         var label = theme === 'dark' ? 'Light mode' : 'Dark mode';
-        var loginBtn = document.getElementById('theme-toggle-login');
-        var appBtn = document.getElementById('theme-toggle-app');
-        if (loginBtn) loginBtn.textContent = label;
-        if (appBtn) appBtn.textContent = label;
-      }
-
-      function toggleTheme() {
-        applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
-      }
-
-      function isStudyMode() {
-        try { return localStorage.getItem(STUDY_KEY) === '1'; } catch (e) { return false; }
-      }
-
-      function syncChromeHeight() {
-        var chrome = document.getElementById('top-chrome');
-        if (!chrome) return;
-        var h = Math.ceil(chrome.getBoundingClientRect().height);
-        document.documentElement.style.setProperty('--lh-chrome-h', h + 'px');
+        var a = document.getElementById('theme-toggle-login');
+        var b = document.getElementById('theme-toggle-app');
+        if (a) a.textContent = label;
+        if (b) b.textContent = label;
+        paintSidebar();
+        syncChromeHeight();
       }
 
       function applyStudyMode(on) {
-        document.body.classList.toggle('study-mode', on);
+        document.body.classList.toggle('study-mode', !!on);
         try {
           if (on) localStorage.setItem(STUDY_KEY, '1');
           else localStorage.removeItem(STUDY_KEY);
-        } catch (e) { /* ignore */ }
+        } catch (e) {}
         var btn = document.getElementById('study-toggle-btn');
         if (btn) {
           btn.textContent = on ? 'Exit study' : 'Study mode';
-          btn.classList.toggle('is-on', on);
         }
         syncChromeHeight();
       }
 
-      function toggleStudyMode() {
-        applyStudyMode(!document.body.classList.contains('study-mode'));
-      }
-
       async function sha256Hex(text) {
-        var data = new TextEncoder().encode(text);
-        var digest = await crypto.subtle.digest('SHA-256', data);
-        return Array.from(new Uint8Array(digest))
-          .map(function (b) { return b.toString(16).padStart(2, '0'); })
-          .join('');
+        var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(function (x) {
+          return x.toString(16).padStart(2, '0');
+        }).join('');
       }
 
       function isLoggedIn() {
-        try { return sessionStorage.getItem(sessionKey) === '1'; }
-        catch (e) { return false; }
+        try { return sessionStorage.getItem(sessionKey) === '1'; } catch (e) { return false; }
       }
-
-      function setLoggedIn(on) {
+      function setLoggedIn(v) {
         try {
-          if (on) sessionStorage.setItem(sessionKey, '1');
+          if (v) sessionStorage.setItem(sessionKey, '1');
           else sessionStorage.removeItem(sessionKey);
-        } catch (e) { /* ignore */ }
-      }
-
-      function showError(msg) {
-        var el = document.getElementById('login-error');
-        el.textContent = msg;
-        el.classList.add('show');
-      }
-
-      function clearError() {
-        var el = document.getElementById('login-error');
-        el.textContent = '';
-        el.classList.remove('show');
+        } catch (e) {}
       }
 
       function showApp() {
         document.getElementById('login-screen').classList.add('is-hidden');
         document.getElementById('app-shell').classList.add('is-open');
-        applyStudyMode(isStudyMode());
+        applyStudyMode(localStorage.getItem(STUDY_KEY) === '1');
         syncChromeHeight();
-        startDocsifyOnce();
-        requestAnimationFrame(syncChromeHeight);
+        startDocsify();
+        setTimeout(function () { syncChromeHeight(); paintSidebar(); }, 50);
+        setTimeout(paintSidebar, 400);
+        setTimeout(paintSidebar, 1200);
       }
 
-      function showLogin() {
-        document.getElementById('login-screen').classList.remove('is-hidden');
-        document.getElementById('app-shell').classList.remove('is-open');
-      }
-
-      function startDocsifyOnce() {
+      function startDocsify() {
         if (docsifyStarted) return;
         docsifyStarted = true;
-
         window.$docsify = {
           name: 'Learning Hub',
           repo: 'sys32805/learning-hub',
@@ -166,113 +150,89 @@
           homepage: 'README.md',
           loadSidebar: true,
           loadNavbar: false,
-          subMaxLevel: 3,
-          alias: {
-            '/.*/_sidebar.md': '/learning-hub/_sidebar.md'
-          },
-          requestHeaders: { 'cache-control': 'no-cache' },
+          subMaxLevel: 2,
+          alias: { '/.*/_sidebar.md': '/learning-hub/_sidebar.md' },
           auto2top: true,
           relativePath: false,
           routerMode: 'hash',
           notFoundPage: false,
           ext: '.md',
-          search: {
-            placeholder: 'Search notes…',
-            noData: 'No results',
-            depth: 3
-          },
+          search: 'auto',
           copyCode: { buttonText: 'Copy', successText: 'Copied' },
-          pagination: {
-            previousText: 'Previous',
-            nextText: 'Next',
-            crossChapter: true
-          }
+          pagination: { previousText: 'Previous', nextText: 'Next', crossChapter: true }
         };
 
-        function loadScript(src) {
-          return new Promise(function (resolve, reject) {
+        function load(src) {
+          return new Promise(function (res, rej) {
             var s = document.createElement('script');
             s.src = src;
-            s.onload = resolve;
-            s.onerror = reject;
+            s.onload = res;
+            s.onerror = rej;
             document.body.appendChild(s);
           });
         }
 
-        loadScript('https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js')
-          .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js'); })
-          .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
-          .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
-          .then(function () { return loadScript('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
+        load('https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js')
+          .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js'); })
+          .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js'); })
+          .then(function () { return load('https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js'); })
+          .then(function () { return load('https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js'); })
           .then(function () {
-            // Remove any Docsify navbar if a cached build injects it
-            function stripAppNav() {
-              document.querySelectorAll('.app-nav').forEach(function (el) { el.remove(); });
-            }
-            stripAppNav();
-            var obs = new MutationObserver(stripAppNav);
-            obs.observe(document.body, { childList: true, subtree: true });
+            document.querySelectorAll('.app-nav').forEach(function (n) { n.remove(); });
+            paintSidebar();
             syncChromeHeight();
+            // Keep sidebar readable after Docsify re-renders
+            new MutationObserver(function () { paintSidebar(); }).observe(document.getElementById('app'), {
+              childList: true,
+              subtree: true
+            });
           })
           .catch(function () {
-            document.getElementById('app').textContent = 'Failed to load study app scripts. Check network and refresh.';
+            document.getElementById('app').textContent = 'Failed to load. Refresh the page.';
           });
       }
 
       document.getElementById('login-form').addEventListener('submit', async function (e) {
         e.preventDefault();
-        clearError();
+        var err = document.getElementById('login-error');
+        err.classList.remove('show');
         var user = document.getElementById('username').value.trim();
         var pass = document.getElementById('password').value;
-        if (!auth.username || !auth.passwordSha256) {
-          showError('Auth config missing. Check assets/auth-config.js');
-          return;
-        }
-        if (user !== auth.username) {
-          showError('Invalid username or password.');
-          return;
-        }
-        var hash = await sha256Hex(pass);
-        if (hash !== auth.passwordSha256) {
-          showError('Invalid username or password.');
+        if (user !== auth.username || (await sha256Hex(pass)) !== auth.passwordSha256) {
+          err.textContent = 'Invalid username or password.';
+          err.classList.add('show');
           return;
         }
         setLoggedIn(true);
         showApp();
       });
 
-      document.getElementById('logout-btn').addEventListener('click', function () {
+      document.getElementById('logout-btn').onclick = function () {
         setLoggedIn(false);
-        window.location.hash = '';
-        window.location.reload();
-      });
+        location.href = '/learning-hub/';
+      };
+      document.getElementById('theme-toggle-login').onclick = function () {
+        applyTheme((localStorage.getItem(THEME_KEY) || 'dark') === 'dark' ? 'light' : 'dark');
+      };
+      document.getElementById('theme-toggle-app').onclick = function () {
+        applyTheme((localStorage.getItem(THEME_KEY) || 'dark') === 'dark' ? 'light' : 'dark');
+      };
+      document.getElementById('study-toggle-btn').onclick = function () {
+        applyStudyMode(!document.body.classList.contains('study-mode'));
+      };
 
-      document.getElementById('theme-toggle-login').addEventListener('click', toggleTheme);
-      document.getElementById('theme-toggle-app').addEventListener('click', toggleTheme);
-      document.getElementById('study-toggle-btn').addEventListener('click', toggleStudyMode);
-
-      document.getElementById('quick-nav').addEventListener('click', function (e) {
-        var a = e.target.closest('a');
+      document.getElementById('quick-nav').onclick = function (e) {
+        var a = e.target.closest('a[data-path]');
         if (!a) return;
-        var href = a.getAttribute('href') || '';
-        var marker = '/learning-hub/#';
-        var i = href.indexOf(marker);
-        if (i === -1) return;
         e.preventDefault();
-        var hashPath = href.substring(i + marker.length);
-        if (!hashPath.startsWith('/')) hashPath = '/' + hashPath;
-        if (window.location.hash === '#' + hashPath) {
-          window.location.hash = '#/';
-          setTimeout(function () { window.location.hash = '#' + hashPath; }, 0);
-        } else {
-          window.location.hash = '#' + hashPath;
-        }
-      });
+        var path = a.getAttribute('data-path') || '/';
+        if (path.charAt(0) !== '/') path = '/' + path;
+        location.hash = '#' + path;
+      };
 
-      applyTheme(getTheme());
+      applyTheme(localStorage.getItem(THEME_KEY) || 'dark');
       window.addEventListener('resize', syncChromeHeight);
       if (isLoggedIn()) showApp();
-      else showLogin();
     })();
   </script>
 </body>
