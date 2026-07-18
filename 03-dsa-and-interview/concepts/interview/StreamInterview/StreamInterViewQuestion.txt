@@ -1,0 +1,288 @@
+Q1. How many male and female employees are there in the organization ?
+// Use Collectors.groupingBy and Collectors.counting to group by gender and count.
+// Example: 
+// Map<String, Long> genderCount = employees.stream()
+//     .collect(Collectors.groupingBy(Employee::getGender, Collectors.counting()));
+
+Q2. Find sum of even numbers and sum of odd numbers in a given list ?
+// Use partitioningBy to partition the list into even and odd numbers, then sum each partition.
+// Example: 
+// Map<Boolean, Integer> partitionedSums = numbers.stream()
+//     .collect(Collectors.partitioningBy(n -> n % 2 == 0, Collectors.summingInt(Integer::intValue)));
+
+Q3. Find duplicate elements in a given integers list ?
+// Use Collectors.groupingBy and filter elements with count > 1.
+// Example: 
+// Set<Integer> duplicates = numbers.stream()
+//     .collect(Collectors.groupingBy(n -> n, Collectors.counting()))
+//     .entrySet().stream()
+//     .filter(e -> e.getValue() > 1) // filter elements with count > 1
+//     .map(Map.Entry::getKey)
+//     .collect(Collectors.toSet());
+
+Below answers are not included in DEMO access. Kindly upgrade your account 🫱 (Whats App here)
+
+Q4. Remove all the occurrences of a given character ?
+// Use filter to remove the character from the stream.
+// Example: 
+// String result = str.chars()
+//     .filter(c -> c != 'a') // filter out the character 'a'
+//     .mapToObj(c -> String.valueOf((char) c)) // convert int stream to char stream
+//     .collect(Collectors.joining());
+
+Q5. Find Special characters in a string ?
+// Use regex to filter out special characters.
+// Example: 
+// String specialChars = str.chars()
+//     .filter(c -> !Character.isLetterOrDigit(c)) // filter out letters and digits
+//     .mapToObj(c -> String.valueOf((char) c))
+//     .collect(Collectors.joining());
+
+Q6. Find out all the numbers starting with 1 from a integer list ?
+// Use filter to check if the string representation starts with "1".
+// Example: 
+// List<Integer> result = numbers.stream()
+//     .filter(n -> String.valueOf(n).startsWith("1")) // check if number starts with "1"
+//     .collect(Collectors.toList());
+
+Q7. Find the employee with the highest salary from a list of employee objects ?
+// Use max with a Comparator comparing the salary.
+// Example: 
+// Employee highestPaid = employees.stream()
+//     .max(Comparator.comparing(Employee::getSalary)) // find max by salary
+//     .orElseThrow(NoSuchElementException::new);
+
+Q8. Concatenate a list of strings into a single string, separated by commas ?
+// Use Collectors.joining with a comma delimiter.
+// Example: 
+// String result = strings.stream()
+//     .collect(Collectors.joining(",")); // join strings with comma
+
+Q9. Find the first non-repeating character in a string ?
+// Use a LinkedHashMap to maintain insertion order and find the first character with count 1.
+// Example: 
+// Map<Character, Long> charCount = str.chars()
+//     .mapToObj(c -> (char) c)
+//     .collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting())); // count characters
+// charCount.entrySet().stream()
+//     .filter(e -> e.getValue() == 1) // filter characters with count 1
+//     .map(Map.Entry::getKey)
+//     .findFirst()
+//     .orElseThrow(NoSuchElementException::new);
+
+Q10. Find frequency of characters of a given string ?
+// Use Collectors.groupingBy to count the frequency of each character.
+// Example: 
+// Map<Character, Long> frequency = str.chars()
+//     .mapToObj(c -> (char) c)
+//     .collect(Collectors.groupingBy(c -> c, Collectors.counting())); // count frequency of characters
+
+Q11. Group a list of strings by their length ?
+// Use Collectors.groupingBy with the string length as the classifier.
+// Example: 
+// Map<Integer, List<String>> groupedByLength = strings.stream()
+//     .collect(Collectors.groupingBy(String::length)); // group by string length
+
+Q12. Count the number of occurrences of each character in a string ?
+// Use Collectors.groupingBy to count the occurrences.
+// Example: 
+// Map<Character, Long> occurrences = str.chars()
+//     .mapToObj(c -> (char) c)
+//     .collect(Collectors.groupingBy(c -> c, Collectors.counting())); // count occurrences of characters
+
+Q13. Filter a list of numbers to only include those greater than 10 and then find their average ?
+// Use filter to include numbers greater than 10 and then use average.
+// Example: 
+// double average = numbers.stream()
+//     .filter(n -> n > 10) // filter numbers greater than 10
+//     .mapToInt(Integer::intValue) // convert to IntStream
+//     .average()
+//     .orElse(0);
+
+Q14. Convert a list of strings to map where key is the string and the value is the length ?
+// Use Collectors.toMap with the string as key and its length as value.
+// Example: 
+// Map<String, Integer> lengthMap = strings.stream()
+//     .collect(Collectors.toMap(Function.identity(), String::length)); // map string to its length
+
+Q15. Flatten a list of lists of integers into a single list of integers ?
+// Use flatMap to flatten the list of lists.
+// Example: 
+// List<Integer> flattenedList = listOfLists.stream()
+//     .flatMap(List::stream) // flatten list of lists
+//     .collect(Collectors.toList());
+
+Q16. Given a list of transactions, filter out transactions of a specific type and collect them into a set ?
+// Use filter to exclude specific type and collect to a set.
+// Example: 
+// Set<Transaction> filteredTransactions = transactions.stream()
+//     .filter(t -> t.getType().equals("specificType")) // filter by transaction type
+//     .collect(Collectors.toSet());
+
+Q17. Find the first name of the oldest person in a list of Person objects ?
+// Use max with a Comparator comparing the age and map to get the first name.
+// Example: 
+// String oldestPersonFirstName = persons.stream()
+//     .max(Comparator.comparing(Person::getAge)) // find max by age
+//     .map(Person::getFirstName)
+//     .orElseThrow(NoSuchElementException::new);
+
+Q18. Skip the first 5 elements in a list and then print the rest ?
+// Use skip to skip the first 5 elements.
+// Example: 
+// list.stream()
+//     .skip(5) // skip first 5 elements
+//     .forEach(System.out::println);
+
+Q19. Collect all unique words from a list of sentences ?
+// Use flatMap to split sentences into words and collect to a set.
+// Example: 
+// Set<String> uniqueWords = sentences.stream()
+//     .flatMap(sentence -> Arrays.stream(sentence.split(" "))) // split sentences into words
+//     .collect(Collectors.toSet());
+
+Q20. Filter out null values from a list of strings using streams ?
+// Use filter to exclude null values.
+// Example: 
+// List<String> filteredList = strings.stream()
+//     .filter(Objects::nonNull) // filter out null values
+//     .collect(Collectors.toList());
+
+Q21. Partition a list of integers into even and odd numbers ?
+// Use Collectors.partitioningBy to partition into even and odd numbers.
+// Example: 
+// Map<Boolean, List<Integer>> partitioned = numbers.stream()
+//     .collect(Collectors.partitioningBy(n -> n % 2 == 0)); // partition into even and odd numbers
+
+Q22. Generate an infinite sequence of random numbers and print the first 10 ?
+// Use Stream.generate to create an infinite stream and limit to 10.
+// Example: 
+// new Random().ints()
+//     .limit(10) // limit to first 10 numbers
+//     .forEach(System.out::println);
+
+Q23. Find the sum of the squares of a list of integers ?
+// Use map to square each integer and sum.
+// Example: 
+// int sumOfSquares = numbers.stream()
+//     .map(n -> n * n) // square each number
+//     .reduce(0, Integer::sum);
+
+Q24. Convert a list of strings to a list of their respective length using streams ?
+// Use map to convert each string to its length.
+// Example: 
+// List<Integer> lengths = strings.stream()
+//     .map(String::length) // map string to its length
+//     .collect(Collectors.toList());
+
+Q25. Find the product of all elements in a list of integers ?
+// Use reduce to multiply all elements.
+// Example: 
+// int product = numbers.stream()
+//     .reduce(1, (a, b) -> a * b); // multiply all elements
+
+Q26. Merge two lists of integers and remove duplicates ?
+// Use Stream.concat to merge and collect to a set to remove duplicates.
+// Example: 
+// List<Integer> mergedList = Stream.concat(list1.stream(), list2.stream())
+//     .distinct() // remove duplicates
+//     .collect(Collectors.toList());
+
+Q27. Check if any string in a list starts with a specific prefix ?
+// Use anyMatch to check if any string starts with the prefix.
+// Example: 
+// boolean startsWithPrefix = strings.stream()
+//     .anyMatch(s -> s.startsWith("prefix")); // check if any string starts with prefix
+
+Q28. List of employees , having properties id , name , salary . List Top three highest paid employees ?
+// Use sorted to sort by salary in descending order and limit to 3.
+// Example: 
+// List<Employee> topThree = employees.stream()
+//     .sorted(Comparator.comparing(Employee::getSalary).reversed()) // sort by salary in descending order
+//     .limit(3) // limit to top 3
+//     .collect(Collectors.toList());
+
+Q29. Array of numbers, find second highest number from the array ?
+// Use sorted to sort in descending order and skip the first element.
+// Example: 
+// int secondHighest = Arrays.stream(numbers)
+//     .boxed()
+//     .sorted(Comparator.reverseOrder()) // sort in descending order
+//     .skip(1) // skip the highest number
+//     .findFirst()
+//     .orElseThrow(NoSuchElementException::new);
+
+Q30. How to sort a map by its values using streams api ?
+// Use entrySet stream and sorted with a Comparator comparing the values.
+// Example: 
+// Map<K, V> sortedMap = map.entrySet().stream()
+//     .sorted(Map.Entry.comparingByValue()) // sort by values
+//     .collect(Collectors.toMap(
+//         Map.Entry::getKey,
+//         Map.Entry::getValue,
+//         (e1, e2) -> e1,
+//         LinkedHashMap::new));
+
+Q31. What are Streams in Java 8 ?
+// Streams are sequences of elements supporting sequential and parallel aggregate operations.
+// Example: 
+// Stream<Integer> stream = list.stream();
+
+Q32. Explain Intermediate operations in Streams ?
+// Intermediate operations return a new stream and are lazy, e.g., filter, map.
+// Example: 
+// Stream<Integer> filteredStream = stream.filter(n -> n > 10); // filter elements greater than 10
+
+Q33. Explain Terminal Operations in Streams ?
+// Terminal operations produce a result or side-effect and close the stream, e.g., collect, forEach.
+// Example: 
+// List<Integer> collectedList = stream.collect(Collectors.toList()); // collect elements into a list
+
+Q34. List All Examples for Stream intermediate operations ?
+// Examples: filter, map, flatMap, distinct, sorted, peek, limit, skip.
+
+Q35. List All Examples for Stream terminal operations ?
+// Examples: forEach, collect, reduce, toArray, min, max, count, anyMatch, allMatch, noneMatch.
+
+Q36. Explain reduce method with examples ?
+// Reduce combines elements of a stream using an associative accumulation function, e.g., sum, product.
+// Example: 
+// int sum = numbers.stream()
+//     .reduce(0, Integer::sum); // sum elements
+
+Q37. Explain distinct and sorted method with examples ?
+// Distinct removes duplicates, sorted sorts the stream elements.
+// Example: 
+// List<Integer> distinctSorted = numbers.stream()
+//     .distinct() // remove duplicates
+//     .sorted() // sort elements
+//     .collect(Collectors.toList());
+
+Q38. How to Sort Streams with sorted using custom Comparator ?
+// Use sorted with a custom Comparator.
+// Example: 
+// List<Employee> sortedEmployees = employees.stream()
+//     .sorted(Comparator.comparing(Employee::getSalary)) // sort by salary
+//     .collect(Collectors.toList());
+
+Q39. How to use Streams Collect method ?
+// Collect gathers the elements of the stream into a collection or other data structure.
+// Example: 
+// List<Integer> collectedList = stream.collect(Collectors.toList()); // collect elements into a list
+
+Q40. Are streams mutable or immutable ?
+// Streams are immutable.
+
+Q41. Can we use collect method twice ?
+// No, a stream can only be consumed once.
+
+Q42. Difference between streams vs for loop ?
+// Streams provide a higher-level abstraction for processing sequences of elements, supporting functional-style operations.
+
+Q43. What are sequential and parallel streams ?
+// Sequential streams process elements in a single thread, parallel streams divide the work among multiple threads.
+
+
+=============================================================================================================================
+1->
+    what is functional interface.

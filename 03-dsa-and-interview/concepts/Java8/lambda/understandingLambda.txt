@@ -1,0 +1,26 @@
+in classic way people use interface the make a instance in new file then overriding the same method
+but in lambad thing are different
+eg. webpage w1 = new webpage();
+    w1.sayMyName("rohit");
+    output: "rohit;
+in lambda way there is not need to overriding the same method
+
+eg
+  wepage w1 = (name)->{System.out.println("rohit")};
+  call w1.sayMyName("rohit");
+  output: "rohit":
+  Note:Interfaces need to present so lamda can understand the which method to overload
+  Note:lambada expresion can be used in functional interface
+
+what is functional interface
+a functional interface is interface which has only one method and other deafult and static methods
+are allowed
+in java 1.8
+/*******************************************************
+ *          PREDICATE   COMPARATOR  FUNCTION           *
+ * STREAM => FILTER       SORT         MAP     COLLECT *
+ *******************************************************/
+
+ motst important interfaces before learning the java 8
+ file:///home/iksula/Pictures/Screenshots/Screenshot%20from%202025-01-30%2001-27-46.png
+ 

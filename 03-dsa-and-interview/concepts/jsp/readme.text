@@ -1,0 +1,2 @@
+to build a web application we need spring web dependency which has tomcat default embeeded container
+for live reload devtools

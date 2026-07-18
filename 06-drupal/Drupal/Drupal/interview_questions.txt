@@ -1,0 +1,606 @@
+Company - DigitalAPICrafts (selected)
+
+1. Difference between Drupal 7 and Drupal 8
+   Answer: Drupal 8 introduced several new features and improvements over Drupal 7, including a new configuration management system, built-in support for RESTful web services, a new templating engine (Twig), and the use of Symfony components.
+
+2. What is entity in Drupal and what entity is provided by Drupal core
+   Answer: An entity in Drupal is a data structure used to store and manage data. Drupal core provides several entity types, including nodes, users, taxonomy terms, and comments.
+
+3. Difference between hook_preprocess and hook_preprocess_hook in Drupal 8
+   Answer: `hook_preprocess` is a generic hook that allows you to alter variables before they are passed to a template, while `hook_preprocess_HOOK` is a specific implementation of `hook_preprocess` for a particular theme hook, such as `hook_preprocess_page` or `hook_preprocess_node`.
+
+4. What is dependency injection in Drupal 8?
+   Answer: Dependency injection is a design pattern used to implement IoC (Inversion of Control), allowing the creation of dependent objects outside of a class and providing those objects to a class through different ways. In Drupal 8, it is commonly used to inject services into classes.
+
+5. How to disable cache for a particular page in Drupal 8
+   Answer: To disable cache for a particular page in Drupal 8, you can use the `page_cache_kill_switch` service. Inject this service into your controller and call the `trigger()` method.
+   Code:
+   ```php
+   // Inject the service in your controller
+   use Symfony\Component\HttpFoundation\Request;
+   use Symfony\Component\HttpFoundation\Response;
+   use Drupal\Core\PageCache\ResponsePolicy\KillSwitch;
+
+   class MyController {
+       protected $killSwitch;
+
+       public function __construct(KillSwitch $killSwitch) {
+           $this->killSwitch = $killSwitch;
+       }
+
+       public function myPage(Request $request) {
+           $this->killSwitch->trigger();
+           return new Response('Cache disabled for this page.');
+       }
+   }
+   ```
+   Explanation: The `page_cache_kill_switch` service is used to disable caching for specific pages. By injecting this service into your controller and calling the `trigger()` method, you can ensure that the page is not cached.
+
+6. What is the difference between tag-based cache and context cache in Drupal 8
+   Answer: Tag-based caching allows you to invalidate cache entries based on tags, while context caching allows you to vary the cache based on different contexts like user roles, languages, etc.
+
+7. What are events in Drupal 8
+   Answer: Events in Drupal 8 are part of the Event Dispatcher system, which allows different components of the system to communicate with each other in a decoupled manner. Events are dispatched and listeners can react to these events.
+   Code:
+   ```php
+   // Define an event
+   use Symfony\Component\EventDispatcher\Event;
+
+   class MyEvent extends Event {
+       const EVENT_NAME = 'my_event';
+
+       protected $data;
+
+       public function __construct($data) {
+           $this->data = $data;
+       }
+
+       public function getData() {
+           return $this->data;
+       }
+   }
+
+   // Dispatch an event
+   use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+   class MyService {
+       protected $eventDispatcher;
+
+       public function __construct(EventDispatcherInterface $eventDispatcher) {
+           $this->eventDispatcher = $eventDispatcher;
+       }
+
+       public function doSomething() {
+           $event = new MyEvent('some data');
+           $this->eventDispatcher->dispatch(MyEvent::EVENT_NAME, $event);
+       }
+   }
+
+   // Listen to an event
+   use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+   class MySubscriber implements EventSubscriberInterface {
+       public static function getSubscribedEvents() {
+           return [
+               MyEvent::EVENT_NAME => 'onMyEvent',
+           ];
+       }
+
+       public function onMyEvent(MyEvent $event) {
+           // React to the event
+           $data = $event->getData();
+           // Do something with the data
+       }
+   }
+   ```
+   Explanation: Events in Drupal 8 are used to allow different parts of the system to communicate in a decoupled manner. You can define events, dispatch them, and listen to them using the Event Dispatcher system.
+
+Company - Capgemini (selected)
+
+1. How to define and call custom functions in a twig file in Drupal 8
+   Answer: In Drupal 8, you can define custom Twig functions by creating a Twig extension. This involves creating a service that extends `\Twig_Extension` and defining your custom functions in it. Then, you can call these functions in your Twig templates.
+   Code:
+   ```php
+   // Define a Twig extension
+   namespace Drupal\my_module\Twig;
+
+   use Twig\Extension\AbstractExtension;
+   use Twig\TwigFunction;
+
+   class MyTwigExtension extends AbstractExtension {
+       public function getFunctions() {
+           return [
+               new TwigFunction('my_custom_function', [$this, 'myCustomFunction']),
+           ];
+       }
+
+       public function myCustomFunction($arg) {
+           return 'Result: ' . $arg;
+       }
+   }
+
+   // Register the Twig extension as a service
+   services:
+     my_module.twig_extension:
+       class: Drupal\my_module\Twig\MyTwigExtension
+       tags:
+         - { name: twig.extension }
+
+   // Call the custom function in a Twig template
+   {{ my_custom_function('argument') }}
+   ```
+   Explanation: To define custom Twig functions, create a Twig extension by extending `\Twig_Extension` and defining your functions. Register the extension as a service and call the functions in your Twig templates.
+
+2. How to pass term name instead of ID in view URL in Drupal 8
+   Answer: To pass the term name instead of the ID in a view URL, you can use the "Rewrite Results" option in the view configuration to rewrite the output of the term ID field to use the term name.
+   Explanation: The "Rewrite Results" option in Views allows you to customize the output of fields. By rewriting the term ID field to use the term name, you can pass the term name in the URL.
+
+3. Panel in Drupal 8
+   Answer: Panels in Drupal 8 allow you to create custom layouts for your pages using a drag-and-drop interface. You can use Panels to create complex layouts without writing custom code.
+   Explanation: Panels provide a user-friendly interface for creating custom page layouts. This allows site builders to create complex layouts without needing to write custom code.
+
+4. When creating custom services in Drupal 8 what are the basic functions to define
+   Answer: When creating custom services in Drupal 8, you typically define the following basic functions:
+   - `__construct()`: The constructor method for dependency injection.
+   - `create()`: A static method for creating the service.
+   - Any other custom methods that provide the functionality of the service.
+   Code:
+   ```php
+   namespace Drupal\my_module;
+
+   use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
+   use Symfony\Component\DependencyInjection\ContainerInterface;
+
+   class MyService implements ContainerInjectionInterface {
+       protected $dependency;
+
+       public function __construct($dependency) {
+           $this->dependency = $dependency;
+       }
+
+       public static function create(ContainerInterface $container) {
+           return new static(
+               $container->get('my_dependency_service')
+           );
+       }
+
+       public function myCustomMethod() {
+           // Custom service functionality
+       }
+   }
+   ```
+   Explanation: When creating custom services, define the constructor for dependency injection, a static `create()` method for service creation, and any other custom methods needed for the service functionality.
+
+Company - investisdigital
+
+1. 4 primary types of entities in Drupal 8 8
+   Answer: Nodes (content), Comments, Files, Taxonomy terms, Taxonomy vocabularies, Users.
+
+2. Twig extension in Drupal 8 in Drupal 8
+   Answer: Twig extensions allow you to add custom functions, filters, and tags to Twig templates. You can create a Twig extension by extending `\Twig_Extension` and registering it as a service.
+
+3. The way Twig loads the page in Drupal 8 in Drupal 8
+   Answer: Twig loads the page by compiling the Twig templates into PHP code, which is then executed to generate the HTML output.
+
+4. Difference between contextual filter and exposed filter in Drupal 8 in Drupal 8
+   Answer: Contextual filters allow you to filter content based on dynamic values from the URL or other contexts, while exposed filters allow users to interactively filter content using form inputs.
+
+5. What is tagged based cache in Drupal 8 in Drupal 8
+   Answer: [Link](https://www.srijan.net/resources/blog/the-fundamentals-of-caching-in-drupal-8)
+
+6. What are different types of cache in Drupal 8 in Drupal 8
+   Answer: Different types of cache in Drupal include page cache, render cache, dynamic page cache, and entity cache.e.
+
+7. What is Manage Form Display in Drupal 8 in Drupal 8
+   Answer: Manage Form Display allows you to configure how fields are displayed on entity forms, such as node edit forms.
+
+8. What are the required files for a custom module in Drupal 8?in Drupal 8?
+   Answer: The required files for a custom module include the `.info.yml` file, which provides metadata about the module.
+
+9. Multilingual and multi sites in Drupal 8 in Drupal 8
+   Answer: Multilingual support in Drupal allows you to create content in multiple languages, while multi-site support allows you to run multiple websites from a single Drupal installation.n.
+
+10. How cache works in Drupal 8 in Drupal 8
+    Answer: Cache works by storing the output of expensive operations (like rendering a page) so that subsequent requests can be served faster by reusing the cached output.
+
+11. What are the different types of cache in Drupal 8?8?
+    Answer: Different types of cache in Drupal include page cache, render cache, dynamic page cache, and entity cache.e.
+
+12. What is the context in Drupal 8?8?
+    Answer: Context in Drupal refers to the conditions or environment in which a piece of content is displayed, such as user roles, languages, or other contextual information.n.
+
+13. How to send variables from PHP to a JavaScript file in Drupal 8?in Drupal 8?
+    Answer: You can send variables from PHP to a JavaScript file using `drupalSettings`. In your PHP code, add the variables to `drupalSettings`, and then access them in your JavaScript file.
+    Code:
+    ```php
+    // In your PHP code
+    drupalSettings.myModule = [
+        'myVariable' => $myVariable,
+    ];
+
+    // In your JavaScript file
+    (function ($, Drupal, drupalSettings) {
+        var myVariable = drupalSettings.myModule.myVariable;
+        console.log(myVariable);
+    })(jQuery, Drupal, drupalSettings);
+    ```
+
+Second round - questions
+
+1. In which file we can add a class for dynamic in Drupal 8 in Drupal 8
+   Answer: `html.html.twig`
+   [Link](https://www.drupal.org/forum/support/theme-development/2015-12-14/how-to-add-a-node-id-as-class-to-the-tag-in-d8)
+
+2. What is an event subscriber in Drupal 8?in Drupal 8?
+   Answer: An event subscriber is a service that listens for specific events and reacts to them. It implements `EventSubscriberInterface` and defines the events it subscribes to.
+
+3. What is cache in Drupal 8?in Drupal 8?
+   Answer: Cache is a mechanism for storing the output of expensive operations so that subsequent requests can be served faster by reusing the cached output.
+
+4. What is the default cache in Drupal 8?in Drupal 8?
+   Answer: The default cache in Drupal includes page cache and dynamic page cache, which are enabled by default to improve performance.e.
+
+5. What is the difference between content type and taxonomy in Drupal 8?in Drupal 8?
+   Answer: Content types are used to define different types of content (e.g., articles, pages), while taxonomy is used to categorize content using terms and vocabularies.
+
+6. What is a preprocess in Drupal 8?in Drupal 8?
+   Answer: A preprocess function is used to modify variables before they are passed to a Twig template for rendering.
+
+7. Why do we give form ID unique in form in Drupal 8?in Drupal 8?
+   Answer: Form IDs must be unique to ensure that each form can be identified and processed correctly by Drupal.
+
+8. What is the view and when to create it in Drupal 8?o create it?
+   Answer: A view is a query builder for displaying content in various formats. You create a view when you need to display content in a specific way, such as a list or a table.
+
+9. In which file is the region defined in Drupal 8?in Drupal 8?
+   Answer: Regions are defined in the theme's `.info.yml` file.
+
+Company - Qed42
+
+1. What is Dependency Injection in Drupal 8?in Drupal 8?
+   Answer: Dependency Injection is a design pattern used to implement IoC (Inversion of Control), allowing the creation of dependent objects outside of a class and providing those objects to a class through different ways.
+   Code:
+   ```php
+   // filepath: /path/to/your/service/file.php
+   namespace Drupal\my_module;
+
+   use Symfony\Component\DependencyInjection\ContainerInterface;
+
+   class MyService {
+       protected $dependency;
+
+       public function __construct($dependency) {
+           $this->dependency = $dependency;
+       }
+
+       public static function create(ContainerInterface $container) {
+           return new static(
+               $container->get('my_dependency_service')
+           );
+       }
+
+       public function myCustomMethod() {
+           // Custom service functionality
+       }
+   }
+   ```
+
+2. Form without submit button how can submit in Drupal 8.in Drupal 8.
+   Answer: You can submit a form without a submit button by using JavaScript to trigger the form submission.
+   Code:
+   ```html
+   <!-- filepath: /path/to/your/form/file.html -->
+   <form id="myForm" action="/submit-form" method="post">
+       <input type="text" name="name" value="John Doe">
+   </form>
+   <button onclick="document.getElementById('myForm').submit();">Submit</button>
+   ```
+
+3. Hooks and events in Drupal 8.8.
+   Answer: Hooks are functions that allow modules to interact with the Drupal core, while events are part of the Event Dispatcher system that allows different components to communicate in a decoupled manner.
+   Code:
+   ```php
+   // filepath: /path/to/your/hook/file.module
+   // Example of a hook
+   function my_module_node_insert($node) {
+       // Code to execute when a node is inserted
+   }
+
+   // filepath: /path/to/your/event/file.php
+   // Example of an event
+   use Symfony\Component\EventDispatcher\Event;
+
+   class MyEvent extends Event {
+       const EVENT_NAME = 'my_event';
+
+       protected $data;
+
+       public function __construct($data) {
+           $this->data = $data;
+       }
+
+       public function getData() {
+           return $this->data;
+       }
+   }
+
+   // Dispatch an event
+   use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+   class MyService {
+       protected $eventDispatcher;
+
+       public function __construct(EventDispatcherInterface $eventDispatcher) {
+           $this->eventDispatcher = $eventDispatcher;
+       }
+
+       public function doSomething() {
+           $event = new MyEvent('some data');
+           $this->eventDispatcher->dispatch(MyEvent::EVENT_NAME, $event);
+       }
+   }
+
+   // Listen to an event
+   use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+   class MySubscriber implements EventSubscriberInterface {
+       public static function getSubscribedEvents() {
+           return [
+               MyEvent::EVENT_NAME => 'onMyEvent',
+           ];
+       }
+
+       public function onMyEvent(MyEvent $event) {
+           // React to the event
+           $data = $event->getData();
+           // Do something with the data
+       }
+   }
+   ```
+
+4. How to get all form fields by passing form id in Drupal 8.in Drupal 8.
+   Answer: You can get all form fields by passing the form ID using the `form_get_form()` function.
+   Code:
+   ```php
+   // filepath: /path/to/your/form/file.php
+   $form = \Drupal::formBuilder()->getForm('my_form_id');
+   foreach ($form as $key => $value) {
+       if (is_array($value) && isset($value['#type'])) {
+           // Process form field
+           $field_type = $value['#type'];
+           $field_name = $key;
+           // Do something with the field
+       }
+   }
+   ```
+
+5. Four pillars of OOP.
+   Answer: The four pillars of OOP are Encapsulation, Abstraction, Inheritance, and Polymorphism.
+
+6. Difference between echo and print.in PHP.
+   Answer: `echo` can output one or more strings, while `print` can only output one string and always returns 1.
+
+7. Difference between class and id in HTML.
+   Answer: `class` is used to define a group of elements that can share the same style, while `id` is used to uniquely identify a single element.
+
+8. Types of CSS.
+   Answer: The three types of CSS are Inline CSS, Internal CSS, and External CSS.
+
+9. How to show comments of view to anonymous and authenticated user comments to authenticated in Drupal 8.in Drupal 8.
+   Answer: You can use the Views module to create a view that filters comments based on user roles.
+   Code:
+   ```php
+   // filepath: /path/to/your/views/file.php
+   $view = \Drupal\views\Views::getView('my_view');
+   if ($view) {
+       $view->setDisplay('default');
+       $view->setArguments(['anonymous', 'authenticated']);
+       $view->execute();
+   }
+   ```
+
+10. Difference between abstraction and encapsulation.
+    Answer: Abstraction is the concept of hiding the complex implementation details and showing only the essential features, while encapsulation is the concept of wrapping data and methods into a single unit (class) and restricting access to some of the object's components.
+
+11. Difference between PHP 5.6 and PHP 7.3.
+    Answer: PHP 7.3 introduced several performance improvements and new features compared to PHP 5.6, such as improved error handling, new language features (e.g., type declarations), and better memory usage.
+
+12. Current version of HTML.
+    Answer: The current version of HTML is HTML5.
+
+Company - Specbee (selected)
+
+1. Dependency Injection in Drupal 8
+   Answer: Dependency Injection is a design pattern used to implement IoC (Inversion of Control), allowing the creation of dependent objects outside of a class and providing those objects to a class through different ways.
+   Code:
+   ```php
+   // filepath: /path/to/your/service/file.php
+   namespace Drupal\my_module;
+
+   use Symfony\Component\DependencyInjection\ContainerInterface;
+
+   class MyService {
+       protected $dependency;
+
+       public function __construct($dependency) {
+           $this->dependency = $dependency;
+       }
+
+       public static function create(ContainerInterface $container) {
+           return new static(
+               $container->get('my_dependency_service')
+           );
+       }
+
+       public function myCustomMethod() {
+           // Custom service functionality
+       }
+   }
+   ```
+
+2. What are the Symfony components used in Drupal 8?
+   Answer: Drupal uses several Symfony components, including the EventDispatcher, HttpFoundation, Routing, DependencyInjection, and Console components.
+
+3. How can we attach JS in Drupal 8?
+   Answer: You can attach JS in Drupal using the `#attached` property in a render array or by adding it to the libraries defined in the module or theme.
+   Code:
+   ```php
+   // filepath: /path/to/your/module/file.module
+   $build['#attached']['library'][] = 'my_module/my_library';
+
+   // filepath: /path/to/your/module/my_module.libraries.yml
+   my_library:
+     js:
+       js/my_script.js: {}
+     dependencies:
+       - core/jquery
+   ```
+
+4. What contains services.yml file, how to include logger in Drupal 8.
+   Answer: The `services.yml` file contains service definitions for dependency injection. To include a logger, you can define it as a service.
+   Code:
+   ```yaml
+   // filepath: /path/to/your/module/my_module.services.yml
+   services:
+     my_module.logger:
+       class: Drupal\my_module\Logger\MyLogger
+       arguments: ['@logger.channel.default']
+   ```
+
+5. What is in the info.yml file in Drupal 8.
+   Answer: The `.info.yml` file contains metadata about the module or theme, such as its name, type, description, dependencies, and version.
+   Code:
+   ```yaml
+   // filepath: /path/to/your/module/my_module.info.yml
+   name: 'My Module'
+   type: module
+   description: 'A custom module for Drupal.'
+   core_version_requirement: ^8 || ^9
+   package: Custom
+   dependencies:
+     - drupal:node
+   ```
+
+6. How to create config forms in Drupal 8.
+   Answer: You can create config forms in Drupal by extending `ConfigFormBase` and defining the form elements in the `buildForm` method.
+   Code:
+   ```php
+   // filepath: /path/to/your/module/src/Form/MyConfigForm.php
+   namespace Drupal\my_module\Form;
+
+   use Drupal\Core\Form\ConfigFormBase;
+   use Drupal\Core\Form\FormStateInterface;
+
+   class MyConfigForm extends ConfigFormBase {
+       public function getFormId() {
+           return 'my_config_form';
+       }
+
+       protected function getEditableConfigNames() {
+           return ['my_module.settings'];
+       }
+
+       public function buildForm(array $form, FormStateInterface $form_state) {
+           $config = $this->config('my_module.settings');
+           $form['my_setting'] = [
+               '#type' => 'textfield',
+               '#title' => $this->t('My Setting'),
+               '#default_value' => $config->get('my_setting'),
+           ];
+           return parent::buildForm($form, $form_state);
+       }
+
+       public function submitForm(array &$form, FormStateInterface $form_state) {
+           $this->config('my_module.settings')
+               ->set('my_setting', $form_state->getValue('my_setting'))
+               ->save();
+           parent::submitForm($form, $form_state);
+       }
+   }
+   ```
+
+7. What is annotation in Drupal 8.
+   Answer: Annotations in Drupal are used to provide metadata for classes, such as plugins, controllers, and services. They are defined using PHP docblock comments.
+
+8. Difference between Drupal 7 and 8.
+   Answer: Drupal 8 introduced several new features and improvements over Drupal 7, including a new configuration management system, built-in support for RESTful web services, a new templating engine (Twig), and the use of Symfony components.
+
+9. How can I separate configuration from local and dev in Drupal 8.
+   Answer: You can separate configuration from local and dev environments by using the `config_split` module, which allows you to define different configuration sets for different environments.
+
+10. Have you used Lando and Docker?
+    Answer: Lando and Docker are tools used for local development environments. Lando is a Docker-based development tool that simplifies the setup and management of development environments.
+
+11. What was the hardest task you worked on till now?
+    Answer: This is a subjective question and the answer will vary based on personal experience.
+
+12. Caching in Drupal 8.
+    Answer: Drupal 8 uses several caching mechanisms, including page cache, render cache, dynamic page cache, and entity cache. These caches help improve performance by storing the output of expensive operations.
+
+13. How to pass variables from Drupal (PHP) to JS in Drupal 8.
+    Answer: You can pass variables from Drupal (PHP) to JS using `drupalSettings`.
+    Code:
+    ```php
+    // filepath: /path/to/your/php/file.php
+    // In your PHP code
+    use Drupal\Core\Render\Markup;
+    use Drupal\Core\Template\Attribute;
+
+    function my_module_page() {
+        $build = [];
+        $build['#attached']['drupalSettings']['myModule'] = [
+            'myVariable' => 'myValue',
+        ];
+        $build['#markup'] = Markup::create('<div id="my-div"></div>');
+        return $build;
+    }
+
+    // filepath: /path/to/your/javascript/file.js
+    // In your JavaScript file
+    (function ($, Drupal, drupalSettings) {
+        $(document).ready(function () {
+            var myVariable = drupalSettings.myModule.myVariable;
+            console.log(myVariable);
+        });
+    })(jQuery, Drupal, drupalSettings);
+    ```
+
+14. How to add JS file in header in Drupal 8 – theme.info.yml.
+    Answer: You can add a JS file in the header by defining it in the theme's `.info.yml` file.
+    Code:
+    ```yaml
+    // filepath: /path/to/your/theme/theme.info.yml
+    libraries:
+      - my_theme/global-scripts
+
+    // filepath: /path/to/your/theme/my_theme.libraries.yml
+    global-scripts:
+      js:
+        js/my_script.js: { attributes: { defer: true } }
+    ```
+
+15. What is a PSR-4 autoloader?
+    Answer: PSR-4 is an autoloading standard that specifies how to map namespaces to filesystem paths. It allows for the automatic loading of classes based on their namespace and directory structure.
+
+Company - zyxware
+
+1. One time login command
+   Answer: You can generate a one-time login link using Drush with the following command:
+   ```
+   drush uli
+   ```
+   This command will generate a one-time login URL for the admin user. You can also specify a user ID or email to generate a link for a specific user:
+   ```
+   drush uli --uid=1
+   ```
+   or
+   ```
+   drush uli --mail="user@example.com"
+   ```
+
+2. Patch apply command in Drupal 8
+   Answer: To apply a patch in Drupal 8, you can use the `patch` command in the terminal. Navigate to the root directory of your Drupal installation and run:
+   ```
+   patch -p1 < /path/to/patch.patch
+   ```
+   This command applies the patch to your Drupal codebase. Make sure to replace `/path/to/patch.patch` with the actual path to your patch file.

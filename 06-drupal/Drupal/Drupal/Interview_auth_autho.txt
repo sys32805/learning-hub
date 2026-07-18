@@ -1,0 +1,108 @@
+**Drupal Authentication & Authorization Interview Questions & Answers**
+
+ **1. What is authentication and authorization in Drupal?**
+**Authentication** verifies user identity (e.g., login via username/password, OAuth2, JWT). **Authorization** determines access control (permissions, roles).
+
+ **2. What are the authentication methods available in Drupal 8?**
+- Basic Authentication
+- OAuth2 Authentication (Simple OAuth)
+- JWT (JSON Web Token) Authentication
+
+ **3. How do you enable Basic Authentication in Drupal 8?**
+Run:
+```bash
+drush en rest basic_auth -y
+```
+Update `rest.settings.yml`:
+```yaml
+rest.settings:
+  authentication:
+    basic_auth: true
+```
+
+ **4. How do you authenticate API requests using Basic Auth?**
+```bash
+curl -u admin:password -X GET "http://example.com/jsonapi/node/article"
+```
+
+ **5. How do you set up OAuth2 authentication in Drupal 8?**
+1. Install Simple OAuth:
+```bash
+composer require drupal/simple_oauth
+drush en simple_oauth -y
+```
+2. Configure OAuth2 in `services.yml`:
+```yaml
+oauth2_server:
+  grant_types:
+    password: true
+```
+3. Obtain a token:
+```bash
+curl -X POST "http://example.com/oauth/token" \
+     -d "grant_type=password&client_id=your_client_id&client_secret=your_client_secret&username=admin&password=admin_password"
+```
+4. Use token:
+```bash
+curl -H "Authorization: Bearer ACCESS_TOKEN" -X GET "http://example.com/jsonapi/node/article"
+```
+
+ **6. How do you implement JWT authentication in Drupal 8?**
+1. Install JWT module:
+```bash
+composer require drupal/jwt
+drush en jwt -y
+```
+2. Generate a JWT token:
+```php
+use Firebase\JWT\JWT;
+
+$payload = [
+  'uid' => 1,
+  'exp' => time() + 3600 // 1 hour expiry
+];
+$token = JWT::encode($payload, 'your_secret_key', 'HS256');
+echo $token;
+```
+3. Use token:
+```bash
+curl -H "Authorization: Bearer YOUR_JWT_TOKEN" -X GET "http://example.com/jsonapi/node/article"
+```
+
+ **7. What is the difference between OAuth2 and JWT authentication?**
+- **OAuth2**: Token-based authentication with refresh tokens.
+- **JWT**: Self-contained token, does not require a database lookup.
+
+ **8. How does Drupal handle role-based authorization?**
+Roles are assigned permissions in Drupal to control access. Example:
+```php
+if (\Drupal::currentUser()->hasPermission('access content')) {
+  drupal_set_message('Access granted');
+} else {
+  throw new \Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException();
+}
+```
+
+ **9. How do you define a custom permission in Drupal 8?**
+In `custom_module.permissions.yml`:
+```yaml
+custom_module.custom_access:
+  title: 'Access custom API'
+  description: 'Allows access to the custom API endpoint'
+```
+
+ **10. How do you restrict API access in routing?**
+In `custom_module.routing.yml`:
+```yaml
+custom_module.api:
+  path: '/api/data'
+  defaults:
+    _controller: '\Drupal\custom_module\Controller\ApiController::data'
+  requirements:
+    _permission: 'access custom api'
+```
+
+---
+
+These questions cover **authentication & authorization** in **Drupal 8** with code examples. Perfect for interviews! 🚀
+

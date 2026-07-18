@@ -1,0 +1,6 @@
+﻿**/.git_nested_backup/
+**/.idea/
+**/target/
+**/*.class
+**/node_modules/
+**/.mvn/wrapper/*.jar

@@ -1,0 +1,271 @@
+Q1. How does HashMap work internally in Java?
+
+Explanation:
+HashMap is a key-value data structure based on hashing.
+It uses an array of linked lists (buckets) to store entries.
+Hashing: The hashCode() method generates a hash that determines the bucket index.
+Collision Handling: If multiple keys have the same hash, they are stored in a linked list (or a balanced tree after Java 8).
+
+Time Complexity:
+Best case: O(1) (Direct lookup)
+Worst case: O(log n) (Tree-based structure after collisions)
+
+Code Example (Internal Working)
+```java
+import java.util.HashMap;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("Apple", 10);
+        map.put("Banana", 20);
+
+        System.out.println(map.get("Apple")); // O(1) lookup
+    }
+}
+```
+
+📌 Key Takeaways:
+✅ Uses hashing to store keys.
+✅ Handles collisions using linked lists or trees.
+
+---
+
+Q2. Can we use a Custom Object as a key in HashMap?
+
+Explanation:
+Yes, but you must override equals() and hashCode() to avoid duplicate keys.
+Without overriding, different objects with the same data will be treated as different keys.
+
+Code Example
+```java
+import java.util.HashMap;
+import java.util.Objects;
+
+class Employee {
+    int id;
+    String name;
+
+    public Employee(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employee emp = (Employee) obj;
+        return id == emp.id && name.equals(emp.name);
+    }
+}
+
+public class CustomHashMap {
+    public static void main(String[] args) {
+        HashMap<Employee, String> map = new HashMap<>();
+        Employee e1 = new Employee(1, "John");
+        Employee e2 = new Employee(1, "John");
+
+        map.put(e1, "HR");
+        System.out.println(map.get(e2)); // Without equals() & hashCode(), this would be null
+    }
+}
+```
+
+📌 Key Takeaways:
+✅ Override hashCode() and equals() for correct behavior.
+
+---
+
+Q3. What is HashMap in Java?
+
+HashMap is a key-value data structure.
+Implements Map<K, V>, based on hashing.
+Stores entries in buckets (array + linked list or tree).
+
+---
+
+Q4. Why is String considered a good key for HashMap?
+
+Immutable: Prevents changes after insertion.
+Good hash distribution: Reduces collisions.
+Efficient hashCode(): Helps in faster lookups.
+
+---
+
+Q5. Is HashMap thread-safe in Java?
+
+No, HashMap is not thread-safe.
+Use ConcurrentHashMap for thread safety.
+
+---
+
+Q6. Explain HashMap before and after Java 8 changes?
+
+Before Java 8: Used a linked list to store multiple values in the same bucket.
+After Java 8: Uses a Balanced Tree (Red-Black Tree) when collision count > 8, improving performance.
+
+---
+
+Q7. How to retrieve value if two object keys have the same hashcode?
+
+equals() method is used to differentiate objects.
+
+---
+
+Q8 & Q9. Explain equals() and hashCode() methods with examples.
+
+👉 Check Answer in Q2.
+
+---
+
+Q10. How to Sort a HashMap in Java?
+
+Use TreeMap or LinkedHashMap (for insertion order).
+
+```java
+map.entrySet()
+   .stream()
+   .sorted(Map.Entry.comparingByKey())
+   .forEach(System.out::println);
+```
+
+---
+
+Q11. Difference between Fail-fast vs. Fail-safe Iterators?
+
+Fail-fast: Throws ConcurrentModificationException if modified during iteration. (HashMap)
+Fail-safe: Allows modification (ConcurrentHashMap).
+
+---
+
+Q12. What is Stack in Java?
+
+A LIFO (Last-In, First-Out) data structure.
+Uses push(), pop() methods.
+
+```java
+Stack<Integer> stack = new Stack<>();
+stack.push(10);
+stack.push(20);
+System.out.println(stack.pop()); // 20
+```
+
+---
+
+Q13. What is Vector in Java?
+
+A thread-safe version of ArrayList.
+
+---
+
+Q14. What is HashMap class in Java?
+
+A non-thread-safe key-value store.
+
+---
+
+Q15. What is WeakHashMap?
+
+Entries get garbage collected when keys have no references.
+
+```java
+WeakHashMap<Object, String> weakMap = new WeakHashMap<>();
+Object key = new Object();
+weakMap.put(key, "WeakMap");
+key = null;
+System.gc(); // Entry removed
+```
+
+---
+
+Q16. What is IdentityHashMap?
+
+Uses reference-based equality (==) instead of equals().
+
+---
+
+Q17. How ConcurrentHashMap changed after Java 8?
+
+Before Java 8: Used segment locking.
+After Java 8: Uses CAS (Compare-And-Swap) for better concurrency.
+
+---
+
+Q18. What is Hash Collision?
+
+When two keys generate the same hash.
+Resolved using linked lists or trees.
+
+---
+
+Q19. Does HashMap allow duplicate values?
+
+Yes, values can be duplicated, but keys must be unique.
+
+---
+
+Q20. Can you store null keys in HashMap?
+
+Yes, HashMap allows 1 null key.
+
+---
+
+Q21. How does HashMap handle null keys?
+
+Stores the null key at index 0.
+
+---
+
+Q22. How does get() method in HashMap work?
+
+Computes hashcode of key.
+Finds bucket index.
+Traverses linked list (or tree) in case of collision.
+Checks equals() method for the right key.
+
+---
+
+Q23. How many entries can you put in a HashMap?
+
+Limited by available memory.
+
+---
+
+Q24. Difference between HashMap and WeakHashMap?
+
+    Feature	HashMap	WeakHashMap
+    Key Removal	Never removed unless explicitly deleted	Removed when no references exist
+    GC Behavior	Entries remain	Entries can be garbage collected
+
+---
+
+Q25. How does HashSet work internally?
+
+Uses HashMap with null as value.
+
+```java
+HashSet<Integer> set = new HashSet<>();
+set.add(10);
+```
+
+Internally calls:
+
+```java
+map.put(10, PRESENT);
+```
+
+---
+
+Final Takeaways
+✔ HashMap is based on hashing.
+✔ String is a good key because it is immutable.
+✔ Always override equals() & hashCode() for custom objects.
+✔ Use ConcurrentHashMap for thread safety.
+
+Would you like code-based explanations for more complex ones? 🚀

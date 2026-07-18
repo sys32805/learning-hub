@@ -1,0 +1,16 @@
+how apis are communicate with each other
+And - > using rest templates circuit breaker finclient ureka
+service ip load balancer
+
+spring core vs spring boot
+Basic needs to be explain
+
+autoConfigration ->get scanned evey package and make bens for the Smallest
+
+application.properties and different env paras
+
+to rollback we have circuit breakers if anything happens in production
+
+
+
+

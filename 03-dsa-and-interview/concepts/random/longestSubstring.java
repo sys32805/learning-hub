@@ -1,0 +1,53 @@
+package rohit;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class longestSubstring {
+
+  public static void main(String[] args) {
+    String s = "321012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210012321001232100123210123210012321001232100123210123";
+    String sub = "";
+    boolean result;
+    String result1 = "";
+    int max = 0;
+    HashMap<String, Integer> sl = new HashMap<>();
+    for (int i = 0; i < s.length(); i++) {
+      for (int j = i + 1; j <= s.length(); j++) {
+        sub = s.substring(i, j);
+        if(isPalindrom(sub)){
+          if (!sl.containsKey(sub)) {
+            sl.put(sub, sub.length());
+          }
+        }
+      }
+    }
+    max = Integer.MIN_VALUE;
+    result1 = "";
+    for (Map.Entry<String, Integer> entry : sl.entrySet()) {
+      int temp = entry.getValue();
+      if (max < temp) {
+        max = temp;
+        result1 = entry.getKey();
+      }
+    }
+    System.out.println(result1);
+  }
+
+  public static boolean isPalindrom(String str) {
+    String revString = "";
+    String ogString = str;
+    int left = 0;
+    int right = str.length()-1;
+    while (left < right) {
+      if (str.charAt(left) != str.charAt(right)) {
+        return false;
+      }
+      left++;
+      right--;
+    }
+    return true;
+  }
+}
