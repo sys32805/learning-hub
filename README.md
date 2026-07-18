@@ -1,6 +1,8 @@
 # Learning Hub (sys32805)
 
-Open **one folder per skill**. Related material lives together so you can learn fast.
+**Website (learn anytime):** [https://sys32805.github.io/learning-hub/](https://sys32805.github.io/learning-hub/)
+
+Open **one folder per skill**. Add notes → push → they appear on the site. See [How to add notes](HOW-TO-ADD-CONTENT.md).
 
 ## Tracks
 
