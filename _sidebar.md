@@ -5,6 +5,10 @@
   * [Roadmap](03-dsa-and-interview/INTERVIEW-PREP.md)
   * [DSA hub](03-dsa-and-interview/README.md)
 
+* **REST API**
+  * [REST API](07-rest-api/README.md)
+  * [REST interview questions](07-rest-api/interview-questions.md)
+
 * **OOPs**
   * [OOPs home](03-dsa-and-interview/oops/README.md)
   * [WHY answers](03-dsa-and-interview/oops/why-answers.md)
@@ -44,10 +48,6 @@
   * [Security](05-spring-boot/interview/security.md)
   * [Trick questions](05-spring-boot/interview/tricks.md)
   * [Q&A bank](05-spring-boot/interview/interview-qa.md)
-
-* **REST API**
-  * [REST API](07-rest-api/README.md)
-  * [Interview questions](07-rest-api/interview-questions.md)
 
 * **Concepts**
   * [Concepts home](03-dsa-and-interview/concepts/README.md)
