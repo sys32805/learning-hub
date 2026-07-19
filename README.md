@@ -3,7 +3,7 @@
 **Site:** https://sys32805.github.io/learning-hub/  
 **Code:** https://github.com/sys32805/learning-hub
 
-Use the **left menu** for everything. Quick header: Home · Roadmap · OOPs · Spring · Concepts · Algorithms · LeetCode · Drupal.
+Use the **left menu** for everything. Quick header: Home · Roadmap · OOPs · Spring · REST · Concepts · Algorithms · LeetCode · Drupal.
 
 ## Tracks
 
@@ -12,6 +12,7 @@ Use the **left menu** for everything. Quick header: Home · Roadmap · OOPs · S
 | Interview roadmap | [INTERVIEW-PREP](03-dsa-and-interview/INTERVIEW-PREP.md) |
 | OOPs | [oops home](03-dsa-and-interview/oops/README.md) |
 | Spring Boot interview | [interview home](05-spring-boot/interview/README.md) |
+| REST API | [REST API](07-rest-api/README.md) · [interview Q&A](07-rest-api/interview-questions.md) |
 | Concepts | [concepts](03-dsa-and-interview/concepts/README.md) |
 | Algorithms | [algorithms](03-dsa-and-interview/algorithms/README.md) |
 | LeetCode | [04-leetcode](04-leetcode/README.md) · [problems](04-leetcode/Leetcode/README.md) |

@@ -45,6 +45,10 @@
   * [Trick questions](05-spring-boot/interview/tricks.md)
   * [Q&A bank](05-spring-boot/interview/interview-qa.md)
 
+* **REST API**
+  * [REST API](07-rest-api/README.md)
+  * [Interview questions](07-rest-api/interview-questions.md)
+
 * **Concepts**
   * [Concepts home](03-dsa-and-interview/concepts/README.md)
   * [Recursion](03-dsa-and-interview/concepts/recursion.md)

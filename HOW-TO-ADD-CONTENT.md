@@ -52,6 +52,7 @@ git push
 | LeetCode solution | `04-leetcode/Leetcode/<problem>/` |
 | Spring | `05-spring-boot/` |
 | Drupal | `06-drupal/` |
+| REST API | `07-rest-api/` |
 
 ## Tips
 
